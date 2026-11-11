@@ -1,0 +1,93 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Work Sans', 'Poppins', ui-sans-serif, system-ui, sans-serif;
+
+    --color-navy-50: #eef3f8;
+    --color-navy-100: #d6e1ec;
+    --color-navy-500: #3a6592;
+    --color-navy-700: #25476b;
+    --color-navy-900: #172d45;
+
+    --color-mint-100: #e3f2ec;
+    --color-mint-400: #8cc6b2;
+    --color-mint-500: #6db49c;
+    --color-mint-600: #4f9a81;
+
+    --color-cream: #fbfaf8;
+    --color-ink: #333333;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-cream text-ink font-sans antialiased;
+    }
+
+    h1, h2, h3 {
+        @apply font-display text-navy-700 font-bold tracking-tight;
+    }
+}
+
+@layer components {
+    .container-site {
+        @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+    }
+
+    .btn {
+        @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+    }
+
+    .btn-primary {
+        @apply bg-mint-500 text-white hover:bg-mint-600 focus-visible:ring-mint-500;
+    }
+
+    .btn-navy {
+        @apply bg-navy-700 text-white hover:bg-navy-900 focus-visible:ring-navy-700;
+    }
+
+    .btn-outline {
+        @apply border-2 border-navy-700 text-navy-700 hover:bg-navy-700 hover:text-white focus-visible:ring-navy-700;
+    }
+
+    .btn-light {
+        @apply bg-white text-navy-700 hover:bg-navy-50 focus-visible:ring-white;
+    }
+
+    .eyebrow {
+        @apply text-xs font-semibold uppercase tracking-[0.2em] text-mint-600;
+    }
+
+    .card {
+        @apply rounded-3xl bg-white shadow-sm ring-1 ring-navy-100/70;
+    }
+
+    .form-label {
+        @apply mb-1.5 block text-sm font-medium text-navy-700;
+    }
+
+    .form-input {
+        @apply block w-full rounded-xl border border-navy-100 bg-white px-4 py-3 text-sm text-ink placeholder:text-gray-400 focus:border-mint-500 focus:ring-2 focus:ring-mint-500/30 focus:outline-none;
+    }
+
+    .prose-site {
+        @apply space-y-4 leading-relaxed text-gray-700;
+    }
+
+    .prose-site h2 {
+        @apply pt-4 text-2xl;
+    }
+
+    .prose-site a {
+        @apply font-semibold text-mint-600 underline underline-offset-4;
+    }
+}
