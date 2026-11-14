@@ -1,4 +1,4 @@
-<x-layouts.app title="Contact" description="Neem contact op met Lansingerlandfit.nl voor groepslessen, personal training of bedrijfsfitness.">
+<x-layouts.app>
     <x-page-hero eyebrow="Contact" title="Contact opnemen?" intro="Laat hier je gegevens en vraag achter en ik neem snel contact met je op!" />
 
     <section class="container-site grid gap-10 py-12 lg:grid-cols-[3fr_2fr]">
@@ -7,7 +7,7 @@
         </div>
 
         <aside class="space-y-6">
-            <div class="rounded-3xl bg-navy-700 p-8 text-white">
+            <div class="rounded-base bg-navy-700 p-8 text-white">
                 <h2 class="text-2xl !text-white">Of onze directe contactgegevens:</h2>
                 <dl class="mt-6 space-y-4 text-sm">
                     <div>

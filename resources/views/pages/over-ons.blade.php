@@ -1,4 +1,4 @@
-<x-layouts.app title="Over ons" description="Maak kennis met Cindy van der Starre, oprichter en trainer van Lansingerlandfit.nl. Vraag hier informatie aan.">
+<x-layouts.app>
     <x-page-hero eyebrow="Over mij" title="Hoi, ik ben {{ config('site.contact.person') }}" intro="Oprichter en trainer van LansingerlandFit. Ik help je om met plezier buiten te sporten, op jouw niveau." />
 
     <section class="container-site grid gap-12 py-12 lg:grid-cols-[3fr_2fr]">
@@ -31,7 +31,7 @@
             <h2 class="text-3xl">Onze trainingen</h2>
             <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 @foreach (config('site.trainings') as $slug => $training)
-                    <a href="{{ route('training', $slug) }}" class="rounded-2xl bg-navy-50 p-6 hover:bg-mint-100">
+                    <a href="{{ route('training', $slug) }}" class="rounded-base bg-navy-50 p-6 hover:bg-mint-100">
                         <h3 class="text-lg">{{ $training['title'] }}</h3>
                         <p class="mt-2 text-sm text-gray-600">{{ $training['short'] }}</p>
                     </a>

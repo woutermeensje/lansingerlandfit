@@ -1,0 +1,193 @@
+/*
+ * Lesrooster (kalender)
+ * Weekkalender met tijdas op desktop, agenda-lijst op mobiel.
+ * De Doordeweeks/Weekend-toggle staat in buttons.css (.btn-toggle).
+ */
+
+@layer components {
+    .schedule {
+        --hour-h: 72px;
+        --tone-mint-bg: var(--color-mint-100);
+        --tone-mint-bar: var(--color-mint-500);
+        --tone-mint-text: var(--color-mint-600);
+        --tone-navy-bg: var(--color-navy-50);
+        --tone-navy-bar: var(--color-navy-500);
+        --tone-navy-text: var(--color-navy-500);
+        --tone-sand-bg: #fbf3e4;
+        --tone-sand-bar: #d9a441;
+        --tone-sand-text: #9a6512;
+    }
+
+    /* ── Toolbar ── */
+    .schedule__toolbar {
+        @apply flex flex-wrap items-center justify-between gap-4;
+    }
+
+    .schedule__legend {
+        @apply flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-gray-600;
+    }
+
+    .schedule__legend-item {
+        @apply inline-flex items-center gap-2 transition hover:text-navy-700;
+    }
+
+    .schedule__swatch {
+        @apply inline-block size-2.5 shrink-0;
+        border-radius: 5px;
+    }
+
+    .schedule__swatch--mint { background: var(--tone-mint-bar); }
+    .schedule__swatch--navy { background: var(--tone-navy-bar); }
+    .schedule__swatch--sand { background: var(--tone-sand-bar); }
+
+    /* ── Kalender (desktop) ── */
+    .schedule__calendar {
+        @apply mt-6 hidden overflow-hidden border border-line bg-white md:grid;
+        border-radius: 5px;
+        grid-template-columns: 4.5rem repeat(var(--days), minmax(0, 1fr));
+        grid-template-rows: auto calc(var(--hours) * var(--hour-h));
+    }
+
+    .schedule__corner,
+    .schedule__day-head {
+        @apply border-b border-line bg-white;
+    }
+
+    .schedule__day-head {
+        @apply flex items-baseline justify-between gap-2 border-l px-4 py-3;
+    }
+
+    .schedule__day-name {
+        @apply text-sm font-bold text-navy-700;
+    }
+
+    .schedule__day-count {
+        @apply text-xs text-gray-500;
+    }
+
+    .schedule__today {
+        @apply bg-mint-500 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-white;
+        border-radius: 5px;
+    }
+
+    .schedule__day-head.is-today {
+        @apply bg-mint-100/50;
+    }
+
+    .schedule__times {
+        @apply flex flex-col;
+    }
+
+    .schedule__time {
+        @apply block shrink-0 px-3 pt-1.5 text-right text-xs tabular-nums text-gray-500;
+        height: var(--hour-h);
+    }
+
+    .schedule__column {
+        @apply relative border-l border-line;
+        background-image:
+            linear-gradient(to bottom, var(--color-line) 1px, transparent 1px),
+            linear-gradient(to bottom, transparent calc(50% - 0.5px), rgb(222 222 222 / 0.45) calc(50% - 0.5px), rgb(222 222 222 / 0.45) calc(50% + 0.5px), transparent calc(50% + 0.5px));
+        background-size: 100% var(--hour-h);
+    }
+
+    .schedule__column.is-today {
+        background-color: rgb(227 242 236 / 0.35);
+    }
+
+    .schedule__event {
+        @apply absolute inset-x-1.5 flex flex-col items-start overflow-hidden border border-line px-3 py-2 text-left transition focus:outline-none focus-visible:ring-2 focus-visible:ring-mint-500;
+        border-radius: 5px;
+        background: var(--tone-bg);
+        border-left: 3px solid var(--tone-bar);
+        cursor: pointer;
+    }
+
+    .schedule__event:hover {
+        @apply z-10;
+    }
+
+    .schedule__event--mint { --tone-bg: var(--tone-mint-bg); --tone-bar: var(--tone-mint-bar); --tone-text: var(--tone-mint-text); }
+    .schedule__event--navy { --tone-bg: var(--tone-navy-bg); --tone-bar: var(--tone-navy-bar); --tone-text: var(--tone-navy-text); }
+    .schedule__event--sand { --tone-bg: var(--tone-sand-bg); --tone-bar: var(--tone-sand-bar); --tone-text: var(--tone-sand-text); }
+
+    .schedule__event-time {
+        @apply text-[11px] font-semibold tabular-nums;
+        color: var(--tone-text);
+    }
+
+    .schedule__event-name {
+        @apply mt-0.5 truncate text-sm font-semibold leading-tight text-navy-700;
+        max-width: 100%;
+    }
+
+    .schedule__event-location {
+        @apply mt-0.5 truncate text-xs text-gray-600;
+        max-width: 100%;
+    }
+
+    .schedule__now {
+        @apply pointer-events-none absolute inset-x-0 z-20 h-0.5 bg-mint-600;
+    }
+
+    .schedule__now::before {
+        content: '';
+        @apply absolute -left-1 -top-1 size-2.5 bg-mint-600;
+        border-radius: 9999px;
+    }
+
+    /* ── Agenda (mobiel) ── */
+    .schedule__agenda {
+        @apply mt-6 overflow-hidden border border-line bg-white md:hidden;
+        border-radius: 5px;
+    }
+
+    .schedule__agenda-day + .schedule__agenda-day {
+        @apply border-t border-line;
+    }
+
+    .schedule__agenda-head {
+        @apply flex items-center gap-2 bg-navy-50/60 px-4 py-2.5 text-sm;
+    }
+
+    .schedule__agenda-item {
+        @apply relative flex items-center gap-4 px-4 py-4;
+    }
+
+    .schedule__agenda-item + .schedule__agenda-item {
+        @apply border-t border-line;
+    }
+
+    .schedule__swatch--bar {
+        @apply absolute inset-y-3 left-0 h-auto w-[3px];
+        border-radius: 0 5px 5px 0;
+    }
+
+    .schedule__agenda-time {
+        @apply flex w-12 shrink-0 flex-col text-sm font-semibold tabular-nums text-navy-700;
+    }
+
+    .schedule__agenda-until {
+        @apply text-xs font-normal text-gray-500;
+    }
+
+    .schedule__agenda-name {
+        @apply font-semibold text-navy-700;
+    }
+
+    .schedule__agenda-name a:hover {
+        @apply underline;
+    }
+
+    .schedule__agenda-meta {
+        @apply truncate text-xs text-gray-500;
+    }
+
+    .schedule__agenda-empty {
+        @apply px-4 py-4 text-sm text-gray-400;
+    }
+
+    .schedule__hint {
+        @apply mt-4 text-sm text-gray-500;
+    }
+}

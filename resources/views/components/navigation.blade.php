@@ -1,69 +1,115 @@
 @php
-    $trainings = config('site.trainings');
+    $trainingItems = collect(config('site.trainings'))->flatMap(fn (array $t, string $slug) => array_filter([
+        [
+            'url' => route('training', $slug),
+            'label' => $t['title'],
+            'active' => request()->routeIs('training') && request()->route('training') === $slug,
+        ],
+        // Duo training heeft een eigen pagina en staat direct na Personal Training.
+        $slug === 'personal-training' ? [
+            'url' => route('duo-training'),
+            'label' => 'Duo Training',
+            'active' => request()->routeIs('duo-training'),
+        ] : null,
+    ]))->values()->all();
+
+    $adviceItems = [
+        ['url' => route('afval-begeleiding'), 'label' => 'Afvalbegeleiding', 'active' => request()->routeIs('afval-begeleiding')],
+        ['url' => route('voedings-advies'), 'label' => 'Voedingsadvies', 'active' => request()->routeIs('voedings-advies')],
+    ];
+
+    $toolItems = [
+        ['url' => route('caloriebehoefte-calculator'), 'label' => 'Caloriebehoefte calculator', 'active' => request()->routeIs('caloriebehoefte-calculator')],
+    ];
+
     $links = [
         ['route' => 'lesrooster', 'label' => 'Lesrooster'],
         ['route' => 'tarieven', 'label' => 'Tarieven'],
-        ['route' => 'trainingen', 'label' => 'Trainingen', 'children' => true],
+        ['route' => 'trainingen', 'label' => 'Trainingen', 'children' => $trainingItems],
+        // Advies en Tools hebben (nog) geen overzichtspagina: het hoofditem linkt naar het eerste subitem.
+        ['route' => 'afval-begeleiding', 'label' => 'Advies', 'children' => $adviceItems],
+        ['route' => 'caloriebehoefte-calculator', 'label' => 'Tools', 'children' => $toolItems],
         ['route' => 'blogs', 'label' => 'Blogs'],
         ['route' => 'over-ons', 'label' => 'Over ons'],
         ['route' => 'contact', 'label' => 'Contact'],
     ];
-    $active = fn (string $r) => request()->routeIs($r, $r.'.*') || ($r === 'trainingen' && request()->routeIs('training'));
+    $active = fn (array $link) => request()->routeIs($link['route'], $link['route'].'.*')
+        || collect($link['children'] ?? [])->contains('active', true);
+    $phone = config('site.contact.phone');
+    $phoneHref = 'tel:'.preg_replace('/\D/', '', $phone);
 @endphp
 
-<header class="sticky top-0 z-40 border-b border-navy-100/60 bg-cream/90 backdrop-blur">
-    <div class="container-site flex h-20 items-center justify-between gap-6">
-        <x-logo />
+<header class="site-header">
+    <div class="site-header__inner">
+        <div class="site-header__brand">
+            <x-logo />
+        </div>
 
-        <nav class="hidden items-center gap-1 lg:flex" aria-label="Hoofdmenu">
-            @foreach ($links as $link)
-                @if ($link['children'] ?? false)
-                    <div class="group relative">
-                        <a href="{{ route($link['route']) }}" @class(['flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium transition hover:text-mint-600', 'text-mint-600' => $active($link['route']), 'text-navy-700' => ! $active($link['route'])])>
+        <nav class="site-header__nav" aria-label="Hoofdmenu">
+            <ul class="site-nav__list">
+                @foreach ($links as $link)
+                    <li @class(['site-nav__item', 'site-nav__item--has-children' => ! empty($link['children'])])>
+                        <a href="{{ route($link['route']) }}" @class(['site-nav__link', 'is-active' => $active($link)])>
                             {{ $link['label'] }}
-                            <svg class="size-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+                            @if (! empty($link['children']))<span class="site-nav__chev" aria-hidden="true"></span>@endif
                         </a>
-                        <div class="invisible absolute left-0 top-full w-64 pt-2 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                            <div class="card p-2">
-                                @foreach ($trainings as $slug => $training)
-                                    <a href="{{ route('training', $slug) }}" class="block rounded-xl px-4 py-2.5 text-sm text-navy-700 hover:bg-mint-100">{{ $training['title'] }}</a>
+                        @if (! empty($link['children']))
+                            <ul class="site-nav__dropdown">
+                                @foreach ($link['children'] as $child)
+                                    <li class="site-nav__item">
+                                        <a href="{{ $child['url'] }}" @class(['site-nav__link', 'is-active' => $child['active']])>{{ $child['label'] }}</a>
+                                    </li>
                                 @endforeach
-                            </div>
-                        </div>
-                    </div>
-                @else
-                    <a href="{{ route($link['route']) }}" @class(['rounded-full px-4 py-2 text-sm font-medium transition hover:text-mint-600', 'text-mint-600' => $active($link['route']), 'text-navy-700' => ! $active($link['route'])])>{{ $link['label'] }}</a>
-                @endif
-            @endforeach
+                            </ul>
+                        @endif
+                    </li>
+                @endforeach
+            </ul>
         </nav>
 
-        <div class="hidden items-center gap-3 lg:flex">
-            <a href="{{ route('contact') }}" class="btn btn-outline !py-2.5">Contact</a>
-            <a href="{{ route('proefles') }}" class="btn btn-primary !py-2.5">Proefles</a>
+        <div class="site-header__divider"></div>
+
+        <div class="site-header__cta">
+            <a href="{{ $phoneHref }}" class="site-header__phone">{{ $phone }}</a>
+            <a href="{{ route('proefles') }}" class="btn btn-primary">Gratis proefles</a>
         </div>
 
-        <button type="button" class="rounded-xl p-2 text-navy-700 lg:hidden" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false">
-            <span class="sr-only">Menu</span>
-            <svg class="size-7" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <button type="button" class="site-header__hamburger" aria-label="Menu openen" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
+            <span class="site-hamburger__bar"></span>
+            <span class="site-hamburger__bar"></span>
+            <span class="site-hamburger__bar"></span>
         </button>
     </div>
-
-    <nav id="mobile-menu" class="hidden border-t border-navy-100/60 bg-cream lg:hidden" aria-label="Mobiel menu">
-        <div class="container-site space-y-1 py-4">
-            @foreach ($links as $link)
-                <a href="{{ route($link['route']) }}" class="block rounded-xl px-3 py-2.5 font-medium text-navy-700 hover:bg-mint-100">{{ $link['label'] }}</a>
-                @if ($link['children'] ?? false)
-                    <div class="ml-4 border-l border-navy-100 pl-3">
-                        @foreach ($trainings as $slug => $training)
-                            <a href="{{ route('training', $slug) }}" class="block rounded-xl px-3 py-2 text-sm text-navy-500 hover:bg-mint-100">{{ $training['title'] }}</a>
-                        @endforeach
-                    </div>
-                @endif
-            @endforeach
-            <div class="grid grid-cols-2 gap-3 pt-3">
-                <a href="{{ route('contact') }}" class="btn btn-outline">Contact</a>
-                <a href="{{ route('proefles') }}" class="btn btn-primary">Proefles</a>
-            </div>
-        </div>
-    </nav>
 </header>
+
+<div id="mobile-menu" class="mobile-nav" aria-hidden="true">
+    <div class="mobile-nav__panel">
+        <button type="button" class="mobile-nav__close" aria-label="Menu sluiten" data-menu-close>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+
+        <nav aria-label="Mobiel menu">
+            <ul class="mobile-nav__list">
+                @foreach ($links as $link)
+                    <li @class(['is-active' => $active($link)])>
+                        <a href="{{ route($link['route']) }}">{{ $link['label'] }}</a>
+                        @if (! empty($link['children']))
+                            <ul>
+                                @foreach ($link['children'] as $child)
+                                    <li @class(['is-active' => $child['active']])><a href="{{ $child['url'] }}">{{ $child['label'] }}</a></li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </li>
+                @endforeach
+            </ul>
+        </nav>
+
+        <div class="mobile-nav__divider"></div>
+
+        <div class="mobile-nav__ctas">
+            <a href="{{ $phoneHref }}" class="btn btn-outline">Bel {{ $phone }}</a>
+            <a href="{{ route('proefles') }}" class="btn btn-primary">Gratis proefles</a>
+        </div>
+    </div>
+</div>

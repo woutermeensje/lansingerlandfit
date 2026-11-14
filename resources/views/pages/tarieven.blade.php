@@ -1,13 +1,13 @@
-<x-layouts.app title="Tarieven" description="Tarieven voor Bootcamp Outdoor, XCO Walking en Personal Training in Lansingerland. Geen inschrijfgeld, gratis proefles.">
+<x-layouts.app>
     <x-page-hero eyebrow="Tarieven" title="Bekijk hier alle pakketten en mogelijkheden" intro="Geen inschrijfgeld en geen langlopend abonnement. Je betaalt per les of kiest voordelig voor een rittenkaart." />
 
     <section class="container-site py-12">
         <div class="grid gap-6 lg:grid-cols-3">
             @foreach ($prices as $plan)
-                <article @class(['flex flex-col rounded-3xl p-8 ring-1', 'bg-navy-700 text-white ring-navy-700 lg:-translate-y-3 shadow-xl' => $plan['highlight'] ?? false, 'bg-white ring-navy-100' => ! ($plan['highlight'] ?? false)])>
+                <article @class(['flex flex-col rounded-base p-8 border', 'bg-navy-700 text-white border-navy-700 lg:-translate-y-3' => $plan['highlight'] ?? false, 'bg-white border-line' => ! ($plan['highlight'] ?? false)])>
                     <h2 @class(['text-2xl', '!text-white' => $plan['highlight'] ?? false])>{{ $plan['title'] }}</h2>
                     <p class="mt-6 flex items-baseline gap-2">
-                        <span class="font-display text-5xl font-extrabold">{{ $plan['price'] }}</span>
+                        <span class="text-5xl font-extrabold">{{ $plan['price'] }}</span>
                         <span @class(['text-sm', 'text-navy-100' => $plan['highlight'] ?? false, 'text-gray-500' => ! ($plan['highlight'] ?? false)])>{{ $plan['unit'] }}</span>
                     </p>
                     @if ($plan['extra'])

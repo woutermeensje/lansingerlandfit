@@ -4,6 +4,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ReservationController;
+use App\Support\Seo;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
@@ -13,6 +14,11 @@ Route::get('/trainingen', [PageController::class, 'trainings'])->name('traininge
 Route::get('/over-ons', [PageController::class, 'about'])->name('over-ons');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::get('/gratis-proefles', [PageController::class, 'trial'])->name('proefles');
+Route::get('/duo-training', [PageController::class, 'duo'])->name('duo-training');
+Route::get('/caloriebehoefte-calculator', [PageController::class, 'calorieCalculator'])->name('caloriebehoefte-calculator');
+Route::get('/sportparken-lansingerland', [PageController::class, 'sportParks'])->name('sportparken');
+Route::get('/afval-begeleiding', [PageController::class, 'weightLoss'])->name('afval-begeleiding');
+Route::get('/voedings-advies', [PageController::class, 'nutrition'])->name('voedings-advies');
 
 Route::get('/blogs', [BlogController::class, 'index'])->name('blogs');
 Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('blogs.show');
@@ -32,7 +38,18 @@ Route::get('/{location}', [PageController::class, 'location'])
 Route::permanentRedirect('/zwangerschapstraining', '/zwangerschapsfitness');
 Route::permanentRedirect('/lidmaatschap', '/tarieven');
 
+Route::get('/sitemap', fn () => view('pages.sitemap', [
+    'groups' => Seo::entries()->groupBy('group'),
+]))->name('sitemap');
+
 Route::get('/sitemap.xml', fn () => response()
-    ->view('sitemap')
+    ->view('sitemap', ['entries' => Seo::entries()])
     ->header('Content-Type', 'application/xml; charset=UTF-8')
-)->name('sitemap');
+)->name('sitemap.xml');
+
+Route::get('/robots.txt', fn () => response(implode("\n", [
+    'User-agent: *',
+    config('seo.indexable') ? 'Allow: /' : 'Disallow: /',
+    '',
+    'Sitemap: '.Seo::url('sitemap.xml'),
+])."\n")->header('Content-Type', 'text/plain; charset=UTF-8'))->name('robots');

@@ -1,6 +1,6 @@
-@unless (request()->routeIs('proefles', 'contact'))
+@unless (request()->routeIs('proefles', 'contact', 'duo-training', 'afval-begeleiding', 'voedings-advies'))
     <section class="container-site py-16">
-        <div class="relative overflow-hidden rounded-[2rem] bg-navy-700 px-6 py-12 text-center sm:px-12 sm:py-16">
+        <div class="relative overflow-hidden rounded-base bg-navy-700 px-6 py-12 text-center sm:px-12 sm:py-16">
             <div class="absolute -right-16 -top-16 size-56 rounded-full bg-mint-500/25" aria-hidden="true"></div>
             <div class="absolute -bottom-20 -left-10 size-64 rounded-full bg-mint-500/15" aria-hidden="true"></div>
             <div class="relative">

@@ -1,4 +1,4 @@
-<x-layouts.app title="Gratis proefles" description="Plan een gratis proefles bij Lansingerlandfit.nl en train een keer vrijblijvend mee in de buitenlucht.">
+<x-layouts.app>
     <x-page-hero eyebrow="Gratis proefles" title="Train een keer gratis mee" intro="Ervaar zelf hoe fijn het is om buiten te sporten. Laat je gegevens achter, dan plannen we samen een proefles in." />
 
     <section class="container-site grid gap-10 py-12 lg:grid-cols-[3fr_2fr]">

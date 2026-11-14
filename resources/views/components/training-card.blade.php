@@ -1,6 +1,6 @@
 @props(['slug', 'training', 'cta' => 'Meer informatie'])
 
-<article class="card group flex flex-col overflow-hidden transition hover:-translate-y-1 hover:shadow-lg">
+<article class="card group flex flex-col overflow-hidden transition hover:-translate-y-1">
     <a href="{{ route('training', $slug) }}" class="block aspect-[4/3] overflow-hidden bg-mint-100" tabindex="-1" aria-hidden="true">
         @if ($image = $training['card_image'] ?? $training['image'])
             <img src="{{ asset($image) }}" alt="" loading="lazy" class="size-full object-cover transition duration-500 group-hover:scale-105">

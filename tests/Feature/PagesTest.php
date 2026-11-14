@@ -8,7 +8,7 @@ class PagesTest extends TestCase
 {
     public function test_static_pages_render(): void
     {
-        foreach (['/', '/lesrooster', '/tarieven', '/trainingen', '/over-ons', '/contact', '/gratis-proefles', '/blogs', '/blogs/waarom-buiten-sporten'] as $url) {
+        foreach (['/', '/lesrooster', '/tarieven', '/trainingen', '/over-ons', '/contact', '/gratis-proefles', '/duo-training', '/caloriebehoefte-calculator', '/sportparken-lansingerland', '/afval-begeleiding', '/voedings-advies', '/blogs', '/blogs/waarom-buiten-sporten'] as $url) {
             $this->get($url)->assertOk();
         }
     }

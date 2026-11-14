@@ -1,24 +1,19 @@
 <x-layouts.app>
     {{-- Hero --}}
-    <section class="relative overflow-hidden bg-gradient-to-br from-mint-100 via-cream to-cream">
-        <div class="container-site grid items-center gap-12 py-14 lg:grid-cols-2 lg:py-24">
+    <section class="relative overflow-hidden">
+        <div class="container-site grid items-center gap-12 py-14 lg:min-h-[500px] lg:grid-cols-2 lg:py-10">
             <div>
-                <p class="eyebrow">Outdoor training · Lansingerland</p>
-                <h1 class="mt-4 text-4xl leading-tight sm:text-5xl lg:text-6xl">Buiten sporten in Lansingerland, Pijnacker en Nootdorp.</h1>
-                <p class="mt-6 max-w-xl text-lg leading-relaxed text-gray-600">Buitensporten, groepslessen, personal training en zwangerschapstraining. Bekijk het aanbod of plan een proefles in.</p>
+                <p class="eyebrow">Lansingerlandfit.nl</p>
+                <h1 class="mt-4 text-[24px] font-semibold leading-tight">Buiten sporten in Lansingerland, Pijnacker en Nootdorp.</h1>
+                <p class="mt-6 max-w-xl text-[15px] font-normal leading-relaxed text-[#333]">Buitensporten, groepslessen, personal training en zwangerschapstraining. Bekijk het aanbod of plan een proefles in.</p>
                 <div class="mt-8 flex flex-wrap gap-3">
                     <a href="{{ route('proefles') }}" class="btn btn-primary">Gratis proefles</a>
                     <a href="{{ route('lesrooster') }}" class="btn btn-outline">Lesrooster</a>
                 </div>
-                <dl class="mt-10 grid max-w-md grid-cols-3 gap-4 text-center">
-                    <div class="card px-3 py-4"><dt class="text-xs text-gray-500">Vanaf</dt><dd class="font-display text-xl font-bold text-navy-700">€ 12,50</dd></div>
-                    <div class="card px-3 py-4"><dt class="text-xs text-gray-500">Lessen p/w</dt><dd class="font-display text-xl font-bold text-navy-700">{{ count(config('site.schedule')) }}</dd></div>
-                    <div class="card px-3 py-4"><dt class="text-xs text-gray-500">Inschrijfgeld</dt><dd class="font-display text-xl font-bold text-navy-700">€ 0</dd></div>
-                </dl>
             </div>
             <div class="relative">
-                <div class="absolute -inset-4 rotate-3 rounded-[2.5rem] bg-mint-500/20" aria-hidden="true"></div>
-                <img src="{{ asset('images/personal-training.png') }}" alt="Personal training in de buitenlucht" class="relative aspect-[4/3] w-full rounded-[2rem] object-cover shadow-xl">
+                <div class="absolute -inset-4 rotate-3 rounded-base bg-mint-500/20" aria-hidden="true"></div>
+                <img src="{{ asset('images/personal-training.png') }}" alt="Personal training in de buitenlucht" class="relative aspect-[4/3] w-full rounded-base object-cover lg:aspect-auto lg:h-[400px]">
             </div>
         </div>
     </section>
@@ -69,7 +64,7 @@
     {{-- USP's --}}
     <section class="bg-white py-16">
         <div class="container-site grid items-center gap-12 lg:grid-cols-2">
-            <img src="{{ asset('images/xco-walking.png') }}" alt="Xco Walking met Cindy" loading="lazy" class="aspect-[3/2] w-full rounded-[2rem] object-cover">
+            <img src="{{ asset('images/xco-walking.png') }}" alt="Xco Walking met Cindy" loading="lazy" class="aspect-[3/2] w-full rounded-base object-cover">
             <div>
                 <p class="eyebrow">Waarom LansingerlandFit?</p>
                 <h2 class="mt-3 text-3xl sm:text-4xl">Sporten met plezier en persoonlijke aandacht</h2>

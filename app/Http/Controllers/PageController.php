@@ -71,4 +71,29 @@ class PageController extends Controller
     {
         return view('pages.gratis-proefles');
     }
+
+    public function duo(): View
+    {
+        return view('pages.duo-training');
+    }
+
+    public function calorieCalculator(): View
+    {
+        return view('pages.caloriebehoefte-calculator');
+    }
+
+    public function sportParks(): View
+    {
+        return view('pages.sportparken-lansingerland', ['parks' => config('site.parks')]);
+    }
+
+    public function weightLoss(): View
+    {
+        return view('pages.afval-begeleiding');
+    }
+
+    public function nutrition(): View
+    {
+        return view('pages.voedings-advies');
+    }
 }

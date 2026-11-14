@@ -8,7 +8,7 @@
     </div>
 
     @if ($errors->hasAny(['first_name', 'last_name', 'email', 'phone', 'interest', 'message']))
-        <div class="rounded-xl bg-red-50 p-4 text-sm text-red-700">
+        <div class="rounded-base bg-red-50 p-4 text-sm text-red-700">
             <p class="font-semibold">Controleer de gemarkeerde velden.</p>
         </div>
     @endif

@@ -176,6 +176,40 @@ return [
         ],
     ],
 
+    /*
+    | Buitensportplekken in en rond Lansingerland (pagina /sportparken-lansingerland).
+    */
+    'parks' => [
+        [
+            'title' => 'De Groenzoom',
+            'place' => 'Berkel en Rodenrijs',
+            'text' => 'Ruim natuur- en recreatiegebied met brede paden, open velden en waterpartijen. Hier trainen we op maandag, woensdag, donderdag en vrijdag.',
+            'activities' => ['Bootcamp Outdoor', 'Xco Walking', 'Seniorenfit'],
+            'image' => 'images/locatie-berkel-en-rodenrijs.png',
+        ],
+        [
+            'title' => 'Dobbeplas',
+            'place' => 'Nootdorp',
+            'text' => 'Recreatieplas met een rondje van een paar kilometer, ideaal om te wandelen, hardlopen en buiten te trainen. Hier trainen we op dinsdag en vrijdag.',
+            'activities' => ['Xco Walking', 'Seniorenfit'],
+            'image' => 'images/locatie-nootdorp.jpg',
+        ],
+        [
+            'title' => 'Hoge Bergse Bos',
+            'place' => 'Bergschenhoek',
+            'text' => 'Heuvelachtig bos- en recreatiegebied: met zijn hellingen een van de weinige plekken in de regio waar je echt hoogtemeters kunt maken.',
+            'activities' => ['Hardlopen', 'Heuveltraining', 'Wandelen'],
+            'image' => 'images/bootcamp-outdoor.png',
+        ],
+        [
+            'title' => 'Rottemeren',
+            'place' => 'Bleiswijk',
+            'text' => 'Uitgestrekt recreatiegebied langs het water met lange fiets- en wandelpaden. Perfect voor een duurloop of een lange wandeling.',
+            'activities' => ['Hardlopen', 'Fietsen', 'Wandelen'],
+            'image' => 'images/xco-walking.png',
+        ],
+    ],
+
     'usps' => [
         'Persoonlijke begeleiding door een ervaren instructrice',
         'Sporten in de frisse buitenlucht',
@@ -185,6 +219,6 @@ return [
         'Focus op plezier, gezondheid en duurzame resultaten',
     ],
 
-    'interests' => ['XCO Walking', 'Bootcamp Outdoor', 'Personal training', 'Bedrijfsbootcamp', 'Zwangerschapstraining', 'Seniorensport', 'Gratis proefles', 'Anders, namelijk'],
+    'interests' => ['XCO Walking', 'Bootcamp Outdoor', 'Personal training', 'Duo training', 'Afvalbegeleiding', 'Voedingsadvies', 'Bedrijfsbootcamp', 'Zwangerschapstraining', 'Seniorensport', 'Gratis proefles', 'Anders, namelijk'],
 
 ];

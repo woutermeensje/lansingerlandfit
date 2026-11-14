@@ -1,5 +1,5 @@
-<x-layouts.app :title="$training['title']" :description="$training['intro']">
-    <section class="bg-gradient-to-b from-mint-100/70 to-cream">
+<x-layouts.app>
+    <section>
         <div class="container-site grid items-center gap-12 py-14 lg:grid-cols-2 lg:py-20">
             <div>
                 <nav class="text-sm text-gray-500" aria-label="Kruimelpad">
@@ -13,7 +13,7 @@
                 </div>
             </div>
             @if ($training['image'])
-                <img src="{{ asset($training['image']) }}" alt="{{ $training['title'] }}" class="max-h-[28rem] w-full rounded-[2rem] object-cover shadow-xl">
+                <img src="{{ asset($training['image']) }}" alt="{{ $training['title'] }}" class="max-h-[28rem] w-full rounded-base object-cover">
             @endif
         </div>
     </section>
@@ -44,7 +44,7 @@
                 <h2 class="text-3xl">Wanneer train je mee?</h2>
                 <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     @foreach ($lessons as $lesson)
-                        <div class="rounded-2xl bg-navy-50 p-5">
+                        <div class="rounded-base bg-navy-50 p-5">
                             <p class="text-sm font-semibold text-mint-600">{{ config('site.days')[$lesson['day']] }} · {{ $lesson['from'] }} – {{ $lesson['to'] }}</p>
                             <p class="mt-1 font-semibold text-navy-700">{{ $lesson['name'] }}</p>
                             <p class="mt-1 text-sm text-gray-600">{{ $lesson['location'] }}</p>

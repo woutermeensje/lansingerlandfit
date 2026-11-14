@@ -1,4 +1,4 @@
-<x-layouts.app title="Trainingen" description="Groepslessen, personal training, bedrijfsfitness en zwangerschapsfitness in Pijnacker, Berkel en Rodenrijs, Bergschenhoek en Nootdorp.">
+<x-layouts.app>
     <x-page-hero eyebrow="Trainingen" title="Onze trainingen, lesrooster en locaties." intro="We trainen buiten in Pijnacker, Berkel en Rodenrijs, Bergschenhoek, Bleiswijk en Nootdorp. Kies de training die bij jou past." />
 
     <section class="container-site py-12">

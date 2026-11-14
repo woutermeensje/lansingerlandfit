@@ -1,6 +1,6 @@
 @props(['eyebrow' => null, 'title', 'intro' => null])
 
-<section class="relative overflow-hidden bg-gradient-to-b from-mint-100/70 to-cream">
+<section class="relative overflow-hidden">
     <div class="container-site py-14 sm:py-20">
         @if ($eyebrow)
             <p class="eyebrow">{{ $eyebrow }}</p>

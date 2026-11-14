@@ -1,0 +1,39 @@
+/*
+ * Text
+ * Alle styling voor typografie loopt via dit bestand.
+ */
+
+@layer base {
+    h1, h2, h3 {
+        @apply text-navy-700 font-bold tracking-tight;
+    }
+}
+
+@layer components {
+    .eyebrow {
+        @apply text-xs font-semibold uppercase tracking-[0.2em] text-mint-600;
+    }
+
+    .prose-site {
+        @apply space-y-4 leading-relaxed text-gray-700;
+    }
+
+    .prose-site h2 {
+        @apply pt-4 text-2xl;
+    }
+
+    .prose-site a {
+        @apply font-semibold text-mint-600 underline underline-offset-4;
+    }
+}
+
+/* ── Genummerde stapkop (o.a. caloriebehoefte calculator) ── */
+@layer components {
+    .calc-step {
+        @apply flex items-center gap-3 text-xl font-bold text-navy-700;
+    }
+
+    .calc-step > span {
+        @apply flex size-8 shrink-0 items-center justify-center rounded-full bg-mint-500 text-sm text-white;
+    }
+}

@@ -1,0 +1,69 @@
+/*
+ * Forms
+ * Alle styling voor formulieren loopt via dit bestand.
+ */
+
+@layer components {
+    .form-label {
+        @apply mb-1.5 block text-sm font-medium text-navy-700;
+    }
+
+    .form-input {
+        @apply block w-full rounded-base border border-line bg-white px-4 py-3 text-sm text-ink placeholder:text-gray-400 focus:border-mint-500 focus:ring-2 focus:ring-mint-500/30 focus:outline-none;
+    }
+}
+
+/* ── Keuzerondjes als knoppen (o.a. caloriebehoefte calculator) ── */
+@layer components {
+    .form-unit {
+        @apply font-normal text-gray-500;
+    }
+
+    .form-choices {
+        @apply flex flex-wrap gap-2;
+    }
+
+    .form-choice {
+        @apply flex cursor-pointer items-center gap-2 border border-line bg-white px-4 py-2.5 text-sm font-medium text-navy-700 transition hover:border-mint-500;
+        border-radius: 5px;
+    }
+
+    .form-choice:has(input:checked) {
+        @apply border-mint-500 bg-mint-100;
+    }
+
+    .form-choice input {
+        @apply accent-mint-600;
+    }
+
+    .form-error {
+        @apply rounded-base bg-red-50 p-4 text-sm text-red-700;
+    }
+}
+
+/* ── Keuzekaart met titel + toelichting (radio) ── */
+@layer components {
+    .form-option {
+        @apply flex cursor-pointer items-start gap-3 rounded-base border border-line bg-white px-4 py-3 transition hover:border-mint-500;
+    }
+
+    .form-option:has(input:checked) {
+        @apply border-mint-500 bg-mint-100;
+    }
+
+    .form-option input {
+        @apply mt-1 accent-mint-600;
+    }
+
+    .form-option__title {
+        @apply block text-sm font-semibold text-navy-700;
+    }
+
+    .form-option__hint {
+        @apply block text-sm text-gray-600;
+    }
+
+    .form-optional > summary {
+        @apply cursor-pointer text-sm font-medium text-mint-600;
+    }
+}

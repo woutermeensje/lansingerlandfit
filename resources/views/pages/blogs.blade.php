@@ -1,4 +1,4 @@
-<x-layouts.app title="Blogs" description="Tips en verhalen over buiten sporten, gezondheid en fit blijven van Lansingerlandfit.nl.">
+<x-layouts.app>
     <x-page-hero eyebrow="Blogs" title="Tips & verhalen" intro="Over buiten sporten, gezond leven en fit blijven." />
 
     <section class="container-site py-12">
