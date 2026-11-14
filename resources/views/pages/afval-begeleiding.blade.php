@@ -23,11 +23,11 @@
 
 <x-layouts.app :faqs="$faqs">
     <section class="relative overflow-hidden">
-        <div class="container-site grid items-center gap-12 py-14 lg:grid-cols-2 lg:py-24">
+        <div class="container-site grid items-center gap-12 py-14 lg:min-h-[500px] lg:grid-cols-2 lg:py-10">
             <div>
                 <p class="eyebrow">Afvalbegeleiding · Lansingerland</p>
-                <h1 class="mt-4 text-4xl leading-tight sm:text-5xl lg:text-6xl">Afvallen zonder crashdieet.</h1>
-                <p class="mt-6 max-w-xl text-lg leading-relaxed text-gray-600">Met persoonlijke begeleiding, training in de buitenlucht en haalbare voedingsadviezen werk je aan een gezond gewicht dat je ook vasthoudt.</p>
+                <h1 class="mt-4 text-[24px] font-semibold leading-tight">Afvallen zonder crashdieet.</h1>
+                <p class="mt-6 max-w-xl text-[15px] font-normal leading-relaxed text-[#333]">Met persoonlijke begeleiding, training in de buitenlucht en haalbare voedingsadviezen werk je aan een gezond gewicht dat je ook vasthoudt.</p>
                 <div class="mt-8 flex flex-wrap gap-3">
                     <a href="#aanvragen" class="btn btn-primary">Kennismaking aanvragen</a>
                     <a href="{{ route('caloriebehoefte-calculator') }}" class="btn btn-outline">Bereken je caloriebehoefte</a>
@@ -35,7 +35,7 @@
             </div>
             <div class="relative">
                 <div class="absolute -inset-4 rotate-3 rounded-base bg-mint-500/20" aria-hidden="true"></div>
-                <img src="{{ asset('images/personal-training.png') }}" alt="Afvalbegeleiding met personal training in de buitenlucht" class="relative aspect-[4/3] w-full rounded-base object-cover">
+                <img src="{{ asset('images/personal-training.png') }}" alt="Afvalbegeleiding met personal training in de buitenlucht" class="relative aspect-[4/3] w-full rounded-base object-cover lg:aspect-auto lg:h-[400px]">
             </div>
         </div>
     </section>
