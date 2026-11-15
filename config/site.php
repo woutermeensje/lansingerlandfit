@@ -17,10 +17,10 @@ return [
 
     'contact' => [
         'person' => 'Cindy van der Starre',
-        'email' => env('SITE_CONTACT_EMAIL', 'info@lansingerlandfit.nl'),
+        'email' => env('SITE_CONTACT_EMAIL', 'cindystarre@hotmail.com'),
         'phone' => env('SITE_CONTACT_PHONE', '06 34049481'),
         // Ontvanger van notificaties van alle formulieren (contact, proefles, duo-training, reserveringen).
-        'notify' => env('ADMIN_EMAIL', env('SITE_CONTACT_EMAIL', 'info@lansingerlandfit.nl')),
+        'notify' => env('ADMIN_EMAIL', env('SITE_CONTACT_EMAIL', 'cindystarre@hotmail.com')),
     ],
 
     'regions' => ['Lansingerland', 'Pijnacker', 'Nootdorp', 'Berkel en Rodenrijs', 'Bergschenhoek', 'Bleiswijk'],
