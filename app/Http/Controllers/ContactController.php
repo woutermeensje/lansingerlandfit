@@ -39,7 +39,9 @@ class ContactController extends Controller
 
         $contact = ContactRequest::create($data);
 
-        Mail::to(config('site.contact.notify'))->send(new NewContactRequest($contact));
+        Mail::to(config('site.contact.notify'))
+            ->cc(config('site.contact.cc'))
+            ->send(new NewContactRequest($contact));
 
         return back()->with('status', 'Bedankt voor je bericht! Ik neem zo snel mogelijk contact met je op.');
     }

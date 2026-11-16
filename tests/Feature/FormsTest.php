@@ -7,15 +7,18 @@ use App\Mail\NewReservation;
 use App\Support\Schedule;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class FormsTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_contact_form_stores_and_mails(): void
+    #[DataProvider('emptyContactEmails')]
+    public function test_contact_form_stores_and_mails_without_a_cc(?string $contactEmail): void
     {
         Mail::fake();
+        config(['site.contact.notify' => 'admin@example.com', 'site.contact.cc' => $contactEmail]);
 
         $this->from('/contact')->post('/contact', [
             'first_name' => 'Anna',
@@ -26,7 +29,42 @@ class FormsTest extends TestCase
         ])->assertRedirect('/contact')->assertSessionHas('status');
 
         $this->assertDatabaseHas('contact_requests', ['email' => 'anna@example.com', 'source' => 'contact']);
-        Mail::assertSent(NewContactRequest::class);
+        Mail::assertSent(NewContactRequest::class, function (NewContactRequest $mail): bool {
+            $this->assertEmpty($mail->cc);
+
+            return $mail->hasTo('admin@example.com');
+        });
+    }
+
+    /**
+     * @return array<string, array{?string}>
+     */
+    public static function emptyContactEmails(): array
+    {
+        return [
+            'not configured' => [null],
+            'empty' => [''],
+        ];
+    }
+
+    public function test_contact_form_sends_a_cc_to_the_contact_email(): void
+    {
+        Mail::fake();
+        config([
+            'site.contact.notify' => 'admin@example.com',
+            'site.contact.cc' => 'cindy@lansingerlandfit.nl',
+        ]);
+
+        $this->from('/contact')->post(route('contact.store'), [
+            'first_name' => 'Anna',
+            'last_name' => 'de Vries',
+            'email' => 'anna@example.com',
+            'message' => 'Ik ontvang graag meer informatie.',
+        ])->assertRedirect('/contact')->assertSessionHas('status');
+
+        $this->assertDatabaseHas('contact_requests', ['email' => 'anna@example.com', 'source' => 'contact']);
+        Mail::assertSent(NewContactRequest::class, fn (NewContactRequest $mail): bool => $mail->hasTo('admin@example.com')
+            && $mail->hasCc('cindy@lansingerlandfit.nl'));
     }
 
     public function test_contact_form_validates(): void

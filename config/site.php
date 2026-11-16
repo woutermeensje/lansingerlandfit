@@ -21,6 +21,7 @@ return [
         'phone' => env('SITE_CONTACT_PHONE', '06 34049481'),
         // Ontvanger van notificaties van alle formulieren (contact, proefles, duo-training, reserveringen).
         'notify' => env('ADMIN_EMAIL', env('SITE_CONTACT_EMAIL', 'cindystarre@hotmail.com')),
+        'cc' => env('CONTACT_EMAIL'),
     ],
 
     'regions' => ['Lansingerland', 'Pijnacker', 'Nootdorp', 'Berkel en Rodenrijs', 'Bergschenhoek', 'Bleiswijk'],
