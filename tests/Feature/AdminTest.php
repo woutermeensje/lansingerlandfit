@@ -2,8 +2,10 @@
 
 namespace Tests\Feature;
 
+use App\Models\ContactRequest;
 use App\Models\Lesson;
 use App\Models\Price;
+use App\Models\Reservation;
 use App\Models\Training;
 use App\Models\User;
 use App\Notifications\AdminPasswordLink;
@@ -28,7 +30,7 @@ class AdminTest extends TestCase
 
     public function test_guests_are_sent_to_login(): void
     {
-        foreach (['/admin', '/admin/lesrooster', '/admin/trainingen', '/admin/tarieven', '/admin/beheerders', '/admin/account'] as $url) {
+        foreach (['/admin', '/admin/lesrooster', '/admin/trainingen', '/admin/tarieven', '/admin/beheerders', '/admin/account', '/admin/aanvragen', '/admin/reserveringen'] as $url) {
             $this->get($url)->assertRedirect('/admin/inloggen');
         }
     }
@@ -336,5 +338,67 @@ class AdminTest extends TestCase
 
         $this->actingAs($admin)->delete("/admin/tarieven/{$price->id}");
         $this->get('/tarieven')->assertDontSee('€ 19,00');
+    }
+
+    // ── Aanvragen en reserveringen ──
+
+    public function test_contact_requests_overview_filters_by_form(): void
+    {
+        ContactRequest::create(['first_name' => 'Anna', 'last_name' => 'Proef', 'email' => 'anna@example.com', 'source' => 'proefles', 'message' => 'Graag op vrijdag']);
+        ContactRequest::create(['first_name' => 'Bram', 'last_name' => 'Duo', 'email' => 'bram@example.com', 'source' => 'duo-training']);
+
+        $this->actingAs($this->admin());
+
+        $this->get('/admin/aanvragen')->assertOk()
+            ->assertSee('Anna Proef')->assertSee('Graag op vrijdag')->assertSee('Bram Duo')->assertSee('Gratis proefles');
+
+        $this->get('/admin/aanvragen?bron=proefles')->assertOk()->assertSee('Anna Proef')->assertDontSee('Bram Duo');
+
+        // Onbekende bron toont gewoon alles.
+        $this->get('/admin/aanvragen?bron=bestaat-niet')->assertOk()->assertSee('Anna Proef')->assertSee('Bram Duo');
+    }
+
+    public function test_contact_requests_are_paginated(): void
+    {
+        foreach (range(1, 30) as $i) {
+            ContactRequest::create(['first_name' => 'Persoon', 'last_name' => "nr{$i}", 'email' => "p{$i}@example.com", 'source' => 'contact']);
+        }
+
+        $this->actingAs($this->admin());
+
+        $this->get('/admin/aanvragen')->assertOk()->assertSee('1–25 van 30')->assertSee('Volgende');
+        $this->get('/admin/aanvragen?page=2')->assertOk()->assertSee('26–30 van 30');
+    }
+
+    public function test_contact_request_can_be_deleted(): void
+    {
+        $request = ContactRequest::create(['first_name' => 'Anna', 'last_name' => 'Weg', 'email' => 'anna@example.com', 'source' => 'contact']);
+
+        $this->actingAs($this->admin())->from('/admin/aanvragen')
+            ->delete("/admin/aanvragen/{$request->id}")->assertRedirect('/admin/aanvragen');
+
+        $this->assertModelMissing($request);
+    }
+
+    public function test_reservations_overview_splits_upcoming_and_past(): void
+    {
+        $base = ['lesson_id' => '1', 'lesson_name' => 'Bootcamp Outdoor', 'starts_at' => '08:30', 'ends_at' => '09:30', 'location' => 'Pijnacker'];
+        Reservation::create([...$base, 'date' => today()->addDays(3), 'name' => 'Komende Kees', 'email' => 'kees@example.com']);
+        Reservation::create([...$base, 'date' => today()->subDays(3), 'name' => 'Oude Olga', 'email' => 'olga@example.com']);
+
+        $this->actingAs($this->admin());
+
+        $this->get('/admin/reserveringen')->assertOk()->assertSee('Komende Kees')->assertDontSee('Oude Olga');
+        $this->get('/admin/reserveringen?periode=geweest')->assertOk()->assertSee('Oude Olga')->assertDontSee('Komende Kees');
+    }
+
+    public function test_reservation_can_be_deleted(): void
+    {
+        $reservation = Reservation::create(['lesson_id' => '1', 'lesson_name' => 'Bootcamp Outdoor', 'date' => today()->addDay(), 'starts_at' => '08:30', 'ends_at' => '09:30', 'location' => 'Pijnacker', 'name' => 'Kees', 'email' => 'kees@example.com']);
+
+        $this->actingAs($this->admin())->from('/admin/reserveringen')
+            ->delete("/admin/reserveringen/{$reservation->id}")->assertRedirect('/admin/reserveringen');
+
+        $this->assertModelMissing($reservation);
     }
 }

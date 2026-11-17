@@ -23,8 +23,9 @@
         @apply rounded-base border border-line px-2 py-0.5 text-xs font-semibold text-gray-600;
     }
 
+    /* Menu altijd op een eigen regel onder het logo: past ook als er meer onderdelen bijkomen. */
     .admin-nav {
-        @apply flex flex-1 flex-wrap items-center gap-1;
+        @apply order-last -mx-2.5 flex basis-full flex-wrap items-center gap-1;
     }
 
     .admin-nav__link {
@@ -36,21 +37,7 @@
     }
 
     .admin-bar__actions {
-        @apply flex items-center gap-1;
-    }
-
-    @media (max-width: 960px) {
-        .admin-nav {
-            @apply order-last basis-full;
-        }
-
-        .admin-bar__actions {
-            @apply ml-auto;
-        }
-
-        .admin-nav {
-            @apply -mx-2.5;
-        }
+        @apply ml-auto flex items-center gap-1;
     }
 
     @media (max-width: 640px) {
@@ -167,6 +154,27 @@
 
     .admin-table tr:last-child td {
         @apply border-b-0;
+    }
+
+    /* Filter-tabs boven een lijst */
+    .admin-tabs {
+        @apply mb-4 flex flex-wrap gap-2;
+    }
+
+    .admin-tab {
+        @apply rounded-base border border-line bg-white px-3 py-1.5 text-sm font-medium text-navy-700 hover:border-mint-500;
+    }
+
+    .admin-tab.is-active {
+        @apply border-navy-700 bg-navy-700 text-white;
+    }
+
+    .admin-tab__count {
+        @apply ml-1 text-xs opacity-70;
+    }
+
+    .admin-pager {
+        @apply mt-4 flex items-center justify-between gap-4;
     }
 
     /* Lesrooster per dag */

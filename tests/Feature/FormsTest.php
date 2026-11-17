@@ -84,6 +84,31 @@ class FormsTest extends TestCase
         Mail::assertNothingSent();
     }
 
+    /**
+     * Elk formulier op de site moet echt aankomen. Vangt bijvoorbeeld een nieuwe
+     * landingspagina af waarvan de bron niet in ContactRequest::SOURCES staat.
+     */
+    public function test_every_contact_form_on_the_site_is_accepted(): void
+    {
+        Mail::fake();
+
+        foreach (['/contact', '/over-ons', '/gratis-proefles', '/duo-training', '/afval-begeleiding', '/voedings-advies'] as $i => $url) {
+            $html = $this->get($url)->assertOk()->getContent();
+            preg_match('/name="source" value="([^"]+)"/', $html, $source);
+            preg_match('/type="hidden" name="interest" value="([^"]+)"/', $html, $interest);
+
+            $this->from($url)->post('/contact', array_filter([
+                'source' => $source[1] ?? null,
+                'interest' => $interest[1] ?? null,
+                'first_name' => 'Test',
+                'last_name' => $url,
+                'email' => "test{$i}@example.com",
+            ]))->assertRedirect($url)->assertSessionHasNoErrors();
+
+            $this->assertDatabaseHas('contact_requests', ['email' => "test{$i}@example.com", 'source' => $source[1]]);
+        }
+    }
+
     public function test_reservation_for_upcoming_lesson(): void
     {
         Mail::fake();

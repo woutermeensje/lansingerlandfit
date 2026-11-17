@@ -24,6 +24,8 @@
                 <nav class="admin-nav" aria-label="Beheer">
                     @foreach ([
                         'admin.dashboard' => 'Dashboard',
+                        'admin.contact-requests.*' => 'Aanvragen',
+                        'admin.reservations.*' => 'Reserveringen',
                         'admin.lessons.*' => 'Lesrooster',
                         'admin.trainings.*' => 'Trainingen',
                         'admin.prices.*' => 'Tarieven',

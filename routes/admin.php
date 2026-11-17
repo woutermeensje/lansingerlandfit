@@ -3,10 +3,12 @@
 use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\ContactRequestController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LessonController;
 use App\Http\Controllers\Admin\PasswordController;
 use App\Http\Controllers\Admin\PriceController;
+use App\Http\Controllers\Admin\ReservationController;
 use App\Http\Controllers\Admin\TrainingController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +47,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
             ->parameters(['tarieven' => 'price'])->except('show')->names('prices');
         Route::resource('beheerders', AdminUserController::class)
             ->parameters(['beheerders' => 'user'])->only(['index', 'create', 'store', 'destroy'])->names('users');
+
+        Route::resource('aanvragen', ContactRequestController::class)
+            ->parameters(['aanvragen' => 'contactRequest'])->only(['index', 'destroy'])->names('contact-requests');
+        Route::resource('reserveringen', ReservationController::class)
+            ->parameters(['reserveringen' => 'reservation'])->only(['index', 'destroy'])->names('reservations');
 
         Route::get('/account', [AccountController::class, 'edit'])->name('account');
         Route::put('/account', [AccountController::class, 'update'])->name('account.update');

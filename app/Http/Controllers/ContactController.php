@@ -26,7 +26,7 @@ class ContactController extends Controller
             'phone' => ['nullable', 'string', 'max:30'],
             'interest' => ['nullable', Rule::in(Site::interests())],
             'message' => ['nullable', 'string', 'max:5000'],
-            'source' => ['nullable', Rule::in(['contact', 'over-ons', 'proefles', 'duo-training'])],
+            'source' => ['nullable', Rule::in(array_keys(ContactRequest::SOURCES))],
         ], [], [
             'first_name' => 'voornaam',
             'last_name' => 'achternaam',

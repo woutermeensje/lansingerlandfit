@@ -22,7 +22,10 @@
     </div>
 
     <section class="admin-section">
-        <h2 class="heading-2">Komende reserveringen</h2>
+        <div class="flex flex-wrap items-end justify-between gap-4">
+            <h2 class="heading-2">Komende reserveringen</h2>
+            <a href="{{ route('admin.reservations.index') }}" class="admin-link text-sm">Alle reserveringen &rarr;</a>
+        </div>
         @if ($reservations->isEmpty())
             <p class="admin-empty">Er zijn nog geen reserveringen voor de komende lessen.</p>
         @else
@@ -45,19 +48,22 @@
     </section>
 
     <section class="admin-section">
-        <h2 class="heading-2">Laatste aanvragen</h2>
+        <div class="flex flex-wrap items-end justify-between gap-4">
+            <h2 class="heading-2">Laatste aanvragen</h2>
+            <a href="{{ route('admin.contact-requests.index') }}" class="admin-link text-sm">Alle aanvragen &rarr;</a>
+        </div>
         @if ($contacts->isEmpty())
             <p class="admin-empty">Er zijn nog geen aanvragen via het contactformulier.</p>
         @else
             <div class="admin-table-wrap">
                 <table class="admin-table">
-                    <thead><tr><th>Ontvangen</th><th>Naam</th><th>Interesse</th><th>Contact</th></tr></thead>
+                    <thead><tr><th>Ontvangen</th><th>Naam</th><th>Formulier</th><th>Contact</th></tr></thead>
                     <tbody>
                         @foreach ($contacts as $c)
                             <tr>
                                 <td class="whitespace-nowrap">{{ $c->created_at->translatedFormat('j M, H:i') }}</td>
                                 <td>{{ $c->first_name }} {{ $c->last_name }}@if ($c->message)<span class="admin-muted block text-xs">{{ \Illuminate\Support\Str::limit($c->message, 90) }}</span>@endif</td>
-                                <td>{{ $c->interest ?: '–' }}</td>
+                                <td>{{ $c->sourceLabel() }}</td>
                                 <td><a href="mailto:{{ $c->email }}" class="admin-link">{{ $c->email }}</a>@if ($c->phone)<span class="admin-muted block text-xs">{{ $c->phone }}</span>@endif</td>
                             </tr>
                         @endforeach
