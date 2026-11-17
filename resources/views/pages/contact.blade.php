@@ -8,7 +8,7 @@
 
         <aside class="space-y-6">
             <div class="rounded-base bg-navy-700 p-8 text-white">
-                <h2 class="text-2xl !text-white">Of onze directe contactgegevens:</h2>
+                <h2 class="text-2xl !text-white">Je kunt mij ook direct bereiken:</h2>
                 <dl class="mt-6 space-y-4 text-sm">
                     <div>
                         <dt class="text-navy-100">Trainer</dt>
@@ -26,7 +26,7 @@
             </div>
             <div class="card p-8">
                 <h2 class="text-xl">Liever eerst proberen?</h2>
-                <p class="mt-2 text-sm text-gray-600">Je eerste groepsles is altijd gratis.</p>
+                <p class="mt-2 text-sm text-gray-600">Een proefles is altijd gratis.</p>
                 <a href="{{ route('proefles') }}" class="btn btn-primary mt-5">Gratis proefles</a>
             </div>
         </aside>

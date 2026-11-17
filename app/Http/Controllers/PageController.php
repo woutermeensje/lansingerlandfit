@@ -11,7 +11,7 @@ class PageController extends Controller
     public function home(): View
     {
         return view('pages.home', [
-            'featured' => collect(Site::trainings())->only(['personal-training', 'xco-walking', 'bedrijfsbootcamp']),
+            'featured' => collect(Site::trainings())->only(['bootcamp-outdoor', 'xco-walking', 'personal-training']),
             'trainings' => Site::trainings(),
         ]);
     }
@@ -70,7 +70,10 @@ class PageController extends Controller
 
     public function trial(): View
     {
-        return view('pages.gratis-proefles');
+        return view('pages.gratis-proefles', [
+            'interest' => request()->query('interesse'),
+            'interests' => collect(Site::trainings())->pluck('interest')->push('Duo training')->unique()->values()->all(),
+        ]);
     }
 
     public function duo(): View
@@ -86,15 +89,5 @@ class PageController extends Controller
     public function sportParks(): View
     {
         return view('pages.sportparken-lansingerland', ['parks' => config('site.parks')]);
-    }
-
-    public function weightLoss(): View
-    {
-        return view('pages.afval-begeleiding');
-    }
-
-    public function nutrition(): View
-    {
-        return view('pages.voedings-advies');
     }
 }

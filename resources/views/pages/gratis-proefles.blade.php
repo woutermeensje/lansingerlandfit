@@ -3,7 +3,8 @@
 
     <section class="container-site grid gap-10 py-12 lg:grid-cols-[3fr_2fr]">
         <div class="card p-6 sm:p-8">
-            <x-contact-form source="proefles" interest="Gratis proefles" :show-interest="false" submit="Proefles aanvragen" />
+            <p class="mb-6 text-gray-600">Een proefles is altijd gratis. Kies de training die je wilt proberen. Weet je het nog niet? Laat de keuze dan open en vertel gerust waar je naar op zoek bent.</p>
+            <x-contact-form source="proefles" :interest="$interest" :interests="$interests" submit="Proefles aanvragen" />
         </div>
         <aside class="card h-fit p-8">
             <h2 class="text-xl">Zo werkt het</h2>

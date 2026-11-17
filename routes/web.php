@@ -17,8 +17,6 @@ Route::get('/gratis-proefles', [PageController::class, 'trial'])->name('proefles
 Route::get('/duo-training', [PageController::class, 'duo'])->name('duo-training');
 Route::get('/caloriebehoefte-calculator', [PageController::class, 'calorieCalculator'])->name('caloriebehoefte-calculator');
 Route::get('/sportparken-lansingerland', [PageController::class, 'sportParks'])->name('sportparken');
-Route::get('/afval-begeleiding', [PageController::class, 'weightLoss'])->name('afval-begeleiding');
-Route::get('/voedings-advies', [PageController::class, 'nutrition'])->name('voedings-advies');
 
 Route::get('/blogs', [BlogController::class, 'index'])->name('blogs');
 Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('blogs.show');
@@ -29,6 +27,8 @@ Route::post('/reserveren', [ReservationController::class, 'store'])->middleware(
 // Oude WordPress-links.
 Route::permanentRedirect('/zwangerschapstraining', '/zwangerschapsfitness');
 Route::permanentRedirect('/lidmaatschap', '/tarieven');
+Route::permanentRedirect('/afval-begeleiding', '/trainingen');
+Route::permanentRedirect('/voedings-advies', '/trainingen');
 
 Route::get('/sitemap', fn () => view('pages.sitemap', [
     'groups' => Seo::entries()->groupBy('group'),

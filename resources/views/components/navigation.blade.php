@@ -13,11 +13,6 @@
         ] : null,
     ]))->values()->all();
 
-    $adviceItems = [
-        ['url' => route('afval-begeleiding'), 'label' => 'Afvalbegeleiding', 'active' => request()->routeIs('afval-begeleiding')],
-        ['url' => route('voedings-advies'), 'label' => 'Voedingsadvies', 'active' => request()->routeIs('voedings-advies')],
-    ];
-
     $toolItems = [
         ['url' => route('caloriebehoefte-calculator'), 'label' => 'Caloriebehoefte calculator', 'active' => request()->routeIs('caloriebehoefte-calculator')],
     ];
@@ -26,11 +21,10 @@
         ['route' => 'lesrooster', 'label' => 'Lesrooster'],
         ['route' => 'tarieven', 'label' => 'Tarieven'],
         ['route' => 'trainingen', 'label' => 'Trainingen', 'children' => $trainingItems],
-        // Advies en Tools hebben (nog) geen overzichtspagina: het hoofditem linkt naar het eerste subitem.
-        ['route' => 'afval-begeleiding', 'label' => 'Advies', 'children' => $adviceItems],
+        // Tools heeft geen overzichtspagina: het hoofditem linkt naar het eerste subitem.
         ['route' => 'caloriebehoefte-calculator', 'label' => 'Tools', 'children' => $toolItems],
         ['route' => 'blogs', 'label' => 'Blogs'],
-        ['route' => 'over-ons', 'label' => 'Over ons'],
+        ['route' => 'over-ons', 'label' => 'Over mij'],
         ['route' => 'contact', 'label' => 'Contact'],
     ];
     $active = fn (array $link) => request()->routeIs($link['route'], $link['route'].'.*')

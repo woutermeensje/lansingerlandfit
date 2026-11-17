@@ -27,7 +27,7 @@ return [
     'separator' => ' | ',
     'max_title' => 60,
     'default_image' => 'images/personal-training.png',
-    'updated' => '2026-11-14',
+    'updated' => '2026-11-17',
 
     /*
     | Vaste pagina's, op routenaam. De volgorde is ook de volgorde in de
@@ -57,7 +57,7 @@ return [
             'name' => 'Tarieven',
             'group' => 'Algemeen',
             'title' => 'Tarieven bootcamp en personal training',
-            'description' => 'Bekijk de tarieven voor Bootcamp Outdoor, XCO Walking en personal training in Lansingerland. Geen inschrijfgeld, voordelige rittenkaarten.',
+            'description' => 'Tarieven voor bootcamp, XCO Walking, zwangerschapsfitness, personal training, duo training en seniorensport. Een proefles is altijd gratis.',
         ],
         'proefles' => [
             'name' => 'Gratis proefles',
@@ -66,7 +66,7 @@ return [
             'description' => 'Train een keer gratis en vrijblijvend mee met Bootcamp Outdoor, Xco Walking of Seniorenfit in Lansingerland, Pijnacker of Nootdorp.',
         ],
         'over-ons' => [
-            'name' => 'Over ons',
+            'name' => 'Over mij',
             'group' => 'Algemeen',
             'title' => 'Over trainer Cindy van der Starre',
             'description' => 'Maak kennis met Cindy van der Starre, oprichter en trainer van Lansingerlandfit.nl. Persoonlijke begeleiding bij buiten sporten in Lansingerland.',
@@ -83,18 +83,6 @@ return [
             'title' => 'Duo training in Lansingerland',
             'description' => 'Duo training in Lansingerland, Pijnacker en Nootdorp: train samen met je partner, vriend of collega onder persoonlijke begeleiding in de buitenlucht.',
             'image' => 'images/personal-training.png',
-        ],
-        'afval-begeleiding' => [
-            'name' => 'Afvalbegeleiding',
-            'group' => 'Begeleiding',
-            'title' => 'Afvalbegeleiding in Lansingerland',
-            'description' => 'Afvallen met persoonlijke begeleiding in Lansingerland, Pijnacker en Nootdorp. Training en voeding op maat voor blijvend resultaat, zonder crashdieet.',
-        ],
-        'voedings-advies' => [
-            'name' => 'Voedingsadvies',
-            'group' => 'Begeleiding',
-            'title' => 'Voedingsadvies in Lansingerland',
-            'description' => 'Persoonlijk voedingsadvies in Lansingerland, Pijnacker en Nootdorp. Praktische tips voor meer energie, gezond afvallen en betere sportprestaties.',
         ],
         'caloriebehoefte-calculator' => [
             'name' => 'Caloriebehoefte calculator',
@@ -133,15 +121,15 @@ return [
         ],
         'berkel-en-rodenrijs' => [
             'title' => 'Buiten sporten in Berkel en Rodenrijs',
-            'description' => 'Train buiten in natuurgebied De Groenzoom in Berkel en Rodenrijs: Xco Walking, Seniorenfit en Bootcamp Outdoor. Bekijk het rooster en train gratis mee.',
+            'description' => 'XCO Walking op woensdag van 18:30 tot 19:30 uur en seniorensport in De Groenzoom, Berkel en Rodenrijs. Bekijk het rooster en probeer een gratis les.',
         ],
         'nootdorp' => [
             'title' => 'Buiten sporten in Nootdorp',
-            'description' => 'Xco Walking en Seniorenfit rond de Dobbeplas in Nootdorp. Sporten in de buitenlucht onder persoonlijke begeleiding. Bekijk het rooster en train gratis mee.',
+            'description' => 'Seniorensport rond de Dobbeplas in Nootdorp. Buiten bewegen met persoonlijke begeleiding. Bekijk het actuele lesrooster of vraag een gratis proefles aan.',
         ],
         'pijnacker' => [
             'title' => 'Buiten sporten in Pijnacker',
-            'description' => 'Bootcamp Outdoor op zondagochtend en personal training in Pijnacker. Werk buiten aan kracht en conditie in een kleine groep. Plan een gratis proefles.',
+            'description' => 'Bootcamp op vrijdag 18:30–19:30 en zondag 08:30–09:30 uur achter de Daltonschool in Ackerswoude, Pijnacker. Vraag een gratis proefles aan.',
         ],
     ],
 

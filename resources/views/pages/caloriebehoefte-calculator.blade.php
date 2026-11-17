@@ -20,9 +20,9 @@
     ];
 
     $faqs = [
-        ['Hoe wordt mijn caloriebehoefte berekend?', 'Eerst berekenen we je ruststofwisseling (BMR): de energie die je lichaam in volledige rust verbruikt. Daarvoor gebruiken we de Mifflin-St Jeor-formule, die wetenschappelijk gezien de meest betrouwbare schatting geeft voor volwassenen. Vul je je vetpercentage in, dan gebruiken we de Katch-McArdle-formule, die rekening houdt met je vetvrije massa. De BMR vermenigvuldigen we met je activiteitsfactor. Zo krijg je je totale dagelijkse energieverbruik (TDEE).'],
+        ['Hoe wordt mijn caloriebehoefte berekend?', 'Eerst berekenen we je ruststofwisseling (BMR): de energie die je lichaam in volledige rust verbruikt. Daarvoor gebruiken we de Mifflin-St Jeor-formule, die op basis van je leeftijd, lengte, gewicht en geslacht een schatting maakt. Vul je je vetpercentage in, dan gebruiken we de Katch-McArdle-formule, die rekening houdt met je vetvrije massa. De BMR vermenigvuldigen we met je activiteitsfactor. Zo krijg je je totale dagelijkse energieverbruik (TDEE).'],
         ['Hoe nauwkeurig is de uitkomst?', 'Het is een goede schatting, maar geen exacte waarde. Erfelijkheid, spiermassa, hormonen, slaap en stress spelen ook mee. Gebruik de uitkomst als startpunt, houd je gewicht 2 à 3 weken bij en stel daarna bij met 100 à 200 kcal per dag.'],
-        ['Hoeveel calorieën moet ik eten om af te vallen?', 'Een kilo lichaamsvet staat gelijk aan ongeveer 7.700 kcal. Met een tekort van 500 kcal per dag val je dus zo\'n 0,5 kilo per week af. Dat is een gezond tempo dat je goed volhoudt. De calculator adviseert nooit minder dan 1.200 kcal (vrouwen) of 1.500 kcal (mannen) per dag.'],
+        ['Voorspelt de calculator hoeveel ik afval?', 'Nee. De uitkomst is een berekende schatting van je energiebehoefte. Ik doe geen beloftes over gewichtsverlies of resultaten binnen een bepaalde periode.'],
         ['Hoeveel calorieën heb ik nodig om aan te komen?', 'Wil je aankomen of spiermassa opbouwen, dan werkt een klein overschot van 250 à 500 kcal per dag het best, in combinatie met krachttraining. Een groter overschot leidt vooral tot extra vetopslag.'],
         ['Waarom is eiwit zo belangrijk?', 'Eiwit helpt je spiermassa te behouden tijdens het afvallen en op te bouwen als je traint. Het verzadigt bovendien goed. Daarom adviseert de calculator 1,6 tot 2 gram eiwit per kilo lichaamsgewicht, afhankelijk van je doel.'],
         ['Voor wie is deze calculator niet geschikt?', 'De calculator is bedoeld voor gezonde volwassenen. Ben je zwanger, geef je borstvoeding, ben je jonger dan 18 of heb je een medische aandoening? Overleg dan met je huisarts, verloskundige of een diëtist.'],
@@ -30,7 +30,7 @@
 @endphp
 
 <x-layouts.app :faqs="$faqs">
-    <x-page-hero eyebrow="Gratis tool" title="Caloriebehoefte calculator" intro="Bereken in een minuut hoeveel calorieën jij per dag nodig hebt: om af te vallen, op gewicht te blijven of aan te komen. Voor mannen en vrouwen, op basis van wetenschappelijk onderbouwde formules." />
+    <x-page-hero eyebrow="Gratis tool" title="Caloriebehoefte calculator" intro="Maak een schatting van je dagelijkse energiebehoefte op basis van je ingevulde gegevens. De berekening voorspelt geen gewichtsverlies of sportresultaten." />
 
     <section class="container-site grid items-start gap-8 py-12 lg:grid-cols-[3fr_2fr]">
         {{-- Invoer --}}
@@ -158,11 +158,11 @@
                 </dl>
 
                 <div class="mt-8 rounded-base bg-mint-100 p-5">
-                    <p class="font-semibold text-navy-700">Hulp nodig om dit vol te houden?</p>
-                    <p class="mt-1 text-sm text-gray-600">Met persoonlijke begeleiding en training op maat haal je je doel makkelijker.</p>
+                    <p class="font-semibold text-navy-700">Wil je met persoonlijke begeleiding sporten?</p>
+                    <p class="mt-1 text-sm text-gray-600">Ik kijk graag met je mee naar een training die past bij jouw wensen en niveau.</p>
                     <div class="mt-4 flex flex-wrap gap-3">
-                        <a href="{{ route('afval-begeleiding') }}" class="btn btn-primary">Afvalbegeleiding</a>
-                        <a href="{{ route('voedings-advies') }}" class="btn btn-outline">Voedingsadvies</a>
+                        <a href="{{ route('training', 'personal-training') }}" class="btn btn-primary">Personal training</a>
+                        <a href="{{ route('contact') }}" class="btn btn-outline">Stel je vraag</a>
                     </div>
                 </div>
             </div>
@@ -200,7 +200,7 @@
                         Mannen: 10 × gewicht + 6,25 × lengte − 5 × leeftijd + 5</p>
                     <p><strong>Katch-McArdle</strong> (als je je vetpercentage invult)<br>
                         370 + 21,6 × vetvrije massa in kg</p>
-                    <p>Calorieën zijn een belangrijk startpunt, maar niet het hele verhaal. De kwaliteit van je voeding, voldoende eiwit, goed slapen en regelmatig bewegen maken het verschil. Daar help ik je graag bij.</p>
+                    <p>De uitkomst is een berekende schatting van je energiebehoefte en zegt niet welke sportresultaten je zult behalen. Bij LansingerlandFit help ik je graag een training te vinden die bij je past.</p>
                     <p class="text-sm text-gray-500">Deze calculator geeft een schatting en is geen medisch advies.</p>
                 </div>
                 <div>

@@ -2,7 +2,7 @@
     $benefits = [
         ['Samen sta je sterker', 'Met een trainingsmaatje sla je minder snel een training over. Jullie houden elkaar scherp en gemotiveerd.'],
         ['Persoonlijke aandacht', 'Met maar twee deelnemers krijg je bijna net zoveel begeleiding als bij personal training. Ik let op jullie techniek en stem de oefeningen op ieder van jullie af.'],
-        ['Kosten delen', 'Je deelt de training, en daarmee ook de kosten. Zo krijg je training op maat voor minder dan een één-op-één-sessie.'],
+        ['Afgestemd op jullie wensen', 'We bespreken jullie niveau en doelen. De prijs is op aanvraag en hangt af van de trainingsduur en hoe vaak jullie willen trainen.'],
         ['Op jullie tijd en plek', 'Jullie kiezen samen het moment en de locatie: in de natuur, in het park of bij jullie in de buurt. Alle materialen neem ik mee.'],
     ];
 

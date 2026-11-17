@@ -12,7 +12,7 @@
 
 return [
 
-    'name' => 'Lansingerlandfit.nl',
+    'name' => 'LansingerlandFit',
     'tagline' => 'Buiten sporten in Lansingerland, Pijnacker en Nootdorp.',
 
     'contact' => [
@@ -53,7 +53,7 @@ return [
         'pijnacker' => [
             'title' => 'Pijnacker',
             'image' => 'images/locatie-nootdorp.jpg',
-            'intro' => 'Buiten sporten in Pijnacker, met de bootcamp op zondagochtend.',
+            'intro' => 'Bootcamp op vrijdag van 18:30 tot 19:30 uur en op zondag van 08:30 tot 09:30 uur, achter de Daltonschool in Ackerswoude, Pijnacker.',
         ],
     ],
 
@@ -64,15 +64,15 @@ return [
         [
             'title' => 'De Groenzoom',
             'place' => 'Berkel en Rodenrijs',
-            'text' => 'Ruim natuur- en recreatiegebied met brede paden, open velden en waterpartijen. Hier trainen we op maandag, woensdag, donderdag en vrijdag.',
-            'activities' => ['Bootcamp Outdoor', 'Xco Walking', 'Seniorenfit'],
+            'text' => 'Ruim natuur- en recreatiegebied met brede paden, open velden en waterpartijen. Bekijk het lesrooster voor de geplande trainingen en de afgesproken verzamelplek.',
+            'activities' => ['Xco Walking', 'Seniorenfit'],
             'image' => 'images/locatie-berkel-en-rodenrijs.png',
         ],
         [
             'title' => 'Dobbeplas',
             'place' => 'Nootdorp',
-            'text' => 'Recreatieplas met een rondje van een paar kilometer, ideaal om te wandelen, hardlopen en buiten te trainen. Hier trainen we op dinsdag en vrijdag.',
-            'activities' => ['Xco Walking', 'Seniorenfit'],
+            'text' => 'Recreatieplas met een rondje van een paar kilometer, ideaal om te wandelen, hardlopen en buiten te trainen. Bekijk het lesrooster voor de geplande trainingen en de afgesproken verzamelplek.',
+            'activities' => ['Seniorenfit'],
             'image' => 'images/locatie-nootdorp.jpg',
         ],
         [
@@ -92,14 +92,14 @@ return [
     ],
 
     'usps' => [
-        'Persoonlijke begeleiding door een ervaren instructrice',
+        'Persoonlijke aandacht en aanwijzingen bij je techniek',
         'Sporten in de frisse buitenlucht',
-        'Geschikt voor ieder niveau',
-        'Kleine groepen met persoonlijke aandacht',
+        'Oefeningen afgestemd op jouw niveau',
+        'Alle trainingsmaterialen worden verzorgd',
         'Actief in Lansingerland, Pijnacker en Nootdorp',
-        'Focus op plezier, gezondheid en duurzame resultaten',
+        'Afwisselende trainingen met ruimte voor gezelligheid',
     ],
 
-    'interests' => ['XCO Walking', 'Bootcamp Outdoor', 'Personal training', 'Duo training', 'Afvalbegeleiding', 'Voedingsadvies', 'Bedrijfsbootcamp', 'Zwangerschapstraining', 'Seniorensport', 'Gratis proefles', 'Anders, namelijk'],
+    'interests' => ['XCO Walking', 'Bootcamp Outdoor', 'Personal training', 'Duo training', 'Bedrijfsbootcamp', 'Zwangerschapsfitness', 'Seniorensport', 'Groepslesinstructeur', 'Danspartner salsa en bachata', 'Gratis proefles', 'Anders, namelijk'],
 
 ];

@@ -6,7 +6,7 @@
 <footer class="site-footer">
     <div class="site-footer__inner">
         <div class="site-footer__column">
-            <h2 class="site-footer__heading">Over ons</h2>
+            <h2 class="site-footer__heading">LansingerlandFit</h2>
             <p class="site-footer__text">{{ config('site.tagline') }}</p>
         </div>
 
@@ -17,8 +17,6 @@
                 <li><a href="{{ route('lesrooster') }}">Lesrooster</a></li>
                 <li><a href="{{ route('tarieven') }}">Tarieven</a></li>
                 <li><a href="{{ route('blogs') }}">Blogs</a></li>
-                <li><a href="{{ route('afval-begeleiding') }}">Afvalbegeleiding</a></li>
-                <li><a href="{{ route('voedings-advies') }}">Voedingsadvies</a></li>
                 <li><a href="{{ route('caloriebehoefte-calculator') }}">Caloriebehoefte calculator</a></li>
                 <li><a href="{{ route('sportparken') }}">Sportparken Lansingerland</a></li>
             </ul>
@@ -30,6 +28,7 @@
                 @foreach (\App\Support\Site::trainings() as $slug => $training)
                     <li><a href="{{ route('training', $slug) }}">{{ $training['title'] }}</a></li>
                 @endforeach
+                <li><a href="{{ route('duo-training') }}">Duo Training</a></li>
             </ul>
         </div>
 
@@ -40,6 +39,8 @@
                 <li><a href="tel:{{ preg_replace('/\D/', '', $phone) }}">{{ $phone }}</a></li>
                 <li><a href="mailto:{{ config('site.contact.email') }}">{{ config('site.contact.email') }}</a></li>
                 <li><a href="{{ route('over-ons') }}">Over mij</a></li>
+                <li><a href="{{ route('over-ons') }}#groepslessen">Groepslesinstructeur</a></li>
+                <li><a href="{{ route('over-ons') }}#danspartner">Danspartner salsa en bachata</a></li>
             </ul>
         </div>
     </div>

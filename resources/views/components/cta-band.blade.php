@@ -1,4 +1,4 @@
-@unless (request()->routeIs('proefles', 'contact', 'duo-training', 'afval-begeleiding', 'voedings-advies'))
+@unless (request()->routeIs('proefles', 'contact', 'duo-training'))
     <section class="container-site py-16">
         <div class="relative overflow-hidden rounded-base bg-navy-700 px-6 py-12 text-center sm:px-12 sm:py-16">
             <div class="absolute -right-16 -top-16 size-56 rounded-full bg-mint-500/25" aria-hidden="true"></div>

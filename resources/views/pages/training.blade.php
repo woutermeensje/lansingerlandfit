@@ -8,7 +8,7 @@
                 <h1 class="mt-4 heading-1">{{ $training['title'] }}</h1>
                 <p class="mt-5 text-lg leading-relaxed text-gray-600">{{ $training['intro'] }}</p>
                 <div class="mt-8 flex flex-wrap gap-3">
-                    <a href="{{ route('proefles') }}" class="btn btn-primary">Gratis proefles</a>
+                    <a href="{{ route('proefles', ['interesse' => $training['interest']]) }}" class="btn btn-primary">Gratis proefles</a>
                     <a href="{{ route('contact', ['interesse' => $training['interest']]) }}" class="btn btn-outline">Meer informatie</a>
                 </div>
             </div>

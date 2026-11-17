@@ -92,7 +92,7 @@ class FormsTest extends TestCase
     {
         Mail::fake();
 
-        foreach (['/contact', '/over-ons', '/gratis-proefles', '/duo-training', '/afval-begeleiding', '/voedings-advies'] as $i => $url) {
+        foreach (['/contact', '/over-ons', '/gratis-proefles', '/duo-training'] as $i => $url) {
             $html = $this->get($url)->assertOk()->getContent();
             preg_match('/name="source" value="([^"]+)"/', $html, $source);
             preg_match('/type="hidden" name="interest" value="([^"]+)"/', $html, $interest);

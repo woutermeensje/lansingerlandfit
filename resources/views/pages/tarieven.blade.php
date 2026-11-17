@@ -1,5 +1,5 @@
 <x-layouts.app>
-    <x-page-hero eyebrow="Tarieven" title="Bekijk hier alle pakketten en mogelijkheden" intro="Geen inschrijfgeld en geen langlopend abonnement. Je betaalt per les of kiest voordelig voor een rittenkaart." />
+    <x-page-hero eyebrow="Tarieven" title="Tarieven en mogelijkheden" intro="Bekijk de prijzen per les of per uur en de beschikbare 10-rittenkaarten. Een proefles is altijd gratis." />
 
     <section class="container-site py-12">
         <div class="grid gap-6 lg:grid-cols-3">
@@ -30,8 +30,8 @@
 
         <div class="card mt-12 grid gap-8 p-8 md:grid-cols-[1fr_auto] md:items-center">
             <div>
-                <h2 class="text-2xl">Overige opties: bedrijfsfitness</h2>
-                <p class="mt-3 max-w-2xl text-gray-600">Bedrijfsfitness bieden we aan op basis van een offerte op maat. De prijs hangt af van het aantal deelnemers, de lesfrequentie, de locatie, de duur van de sessies, het type training en het gebruik van materialen.</p>
+                <h2 class="text-2xl">Bedrijfsbootcamp op maat</h2>
+                <p class="mt-3 max-w-2xl text-gray-600">Voor een bedrijfsbootcamp maak ik een offerte op maat. De prijs hangt af van het aantal deelnemers, de lesfrequentie, de locatie, de duur van de sessies, het type training en het gebruik van materialen.</p>
             </div>
             <a href="{{ route('contact', ['interesse' => 'Bedrijfsbootcamp']) }}" class="btn btn-primary">Offerte aanvragen</a>
         </div>

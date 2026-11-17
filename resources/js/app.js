@@ -72,7 +72,6 @@ document.querySelectorAll('[data-calorie-calculator]').forEach((form) => {
     const $ = (sel) => root.querySelector(`[data-calc-${sel}]`);
     const nl = (n, digits = 0) => n.toLocaleString('nl-NL', { minimumFractionDigits: digits, maximumFractionDigits: digits });
 
-    const KCAL_PER_KG = 7700;
     const MIN_KCAL = { female: 1200, male: 1500 };
     const DELTAS = {
         lose: { slow: -250, normal: -500, fast: -750 },
@@ -127,7 +126,6 @@ document.querySelectorAll('[data-calorie-calculator]').forEach((form) => {
             useKatch, bmr, tdee, target, bmi, protein, fat, carbs,
             floored: v.goal === 'lose' && tdee + DELTAS.lose[v.pace] < floor,
             floor,
-            weeklyKg: ((target - tdee) * 7) / KCAL_PER_KG,
             goals: Object.fromEntries(Object.keys(DELTAS).map((g) => [g, targetFor(g)])),
         };
     };
@@ -152,12 +150,10 @@ document.querySelectorAll('[data-calorie-calculator]').forEach((form) => {
 
         $('goal-label').textContent = LABELS[v.goal];
         $('target').textContent = nl(r.target);
-        $('change').textContent = v.goal === 'maintain'
-            ? 'Je gewicht blijft stabiel'
-            : `≈ ${nl(Math.abs(r.weeklyKg), 2)} kg per week ${r.weeklyKg < 0 ? 'afvallen' : 'aankomen'}`;
+        $('change').textContent = 'Dit is een berekende schatting, geen voorspelling van je gewichtsverandering.';
 
         $('floor').classList.toggle('hidden', !r.floored);
-        $('floor').textContent = `We adviseren niet minder dan ${nl(r.floor)} kcal per dag te eten. Kies een rustiger tempo of beweeg meer om sneller resultaat te halen.`;
+        $('floor').textContent = `De berekening is begrensd op ${nl(r.floor)} kcal per dag. Dit getal is geen persoonlijk voedingsadvies.`;
 
         Object.entries(r.goals).forEach(([goal, kcal]) => {
             $(`goal-kcal="${goal}"`).textContent = nl(kcal);

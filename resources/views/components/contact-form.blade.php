@@ -1,4 +1,4 @@
-@props(['source' => 'contact', 'interest' => null, 'showInterest' => true, 'submit' => 'Verstuur'])
+@props(['source' => 'contact', 'interest' => null, 'interests' => null, 'showInterest' => true, 'submit' => 'Verstuur'])
 
 <form method="POST" action="{{ route('contact.store') }}" {{ $attributes->merge(['class' => 'space-y-5']) }}>
     @csrf
@@ -38,7 +38,7 @@
             <label for="{{ $source }}-interest" class="form-label">Waar heb je interesse in?</label>
             <select id="{{ $source }}-interest" name="interest" class="form-input">
                 <option value="">Maak een keuze</option>
-                @foreach (\App\Support\Site::interests() as $option)
+                @foreach ($interests ?? \App\Support\Site::interests() as $option)
                     <option value="{{ $option }}" @selected(old('interest', $interest) === $option)>{{ $option }}</option>
                 @endforeach
             </select>
