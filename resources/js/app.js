@@ -192,3 +192,9 @@ document.querySelectorAll('[data-calorie-calculator]').forEach((form) => {
     });
     render();
 });
+
+// Beheer: bevestiging vragen voor verwijderen (<form data-confirm="...">)
+document.addEventListener('submit', (e) => {
+    const message = e.target.dataset?.confirm;
+    if (message && !window.confirm(message)) e.preventDefault();
+});

@@ -16,7 +16,7 @@ class ReservationController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $data = $request->validate([
-            'lesson_id' => ['required', Rule::in(collect(config('site.schedule'))->pluck('id'))],
+            'lesson_id' => ['required', Rule::exists('lessons', 'id')],
             'date' => ['required', 'date_format:Y-m-d'],
             'name' => ['required', 'string', 'max:150'],
             'email' => ['required', 'email', 'max:255'],

@@ -1,5 +1,5 @@
 @php
-    $trainingItems = collect(config('site.trainings'))->flatMap(fn (array $t, string $slug) => array_filter([
+    $trainingItems = collect(\App\Support\Site::trainings())->flatMap(fn (array $t, string $slug) => array_filter([
         [
             'url' => route('training', $slug),
             'label' => $t['title'],

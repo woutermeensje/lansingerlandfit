@@ -6,13 +6,13 @@ use Carbon\CarbonImmutable;
 use Illuminate\Support\Collection;
 
 /**
- * Leest het weekrooster uit config/site.php.
+ * Het weekrooster (uit de database, beheerd via /admin/lesrooster).
  */
 class Schedule
 {
     public static function lessons(): Collection
     {
-        return collect(config('site.schedule'))
+        return Site::lessons()
             ->sortBy(fn (array $l) => sprintf('%d-%s', $l['day'], $l['from']))
             ->values();
     }

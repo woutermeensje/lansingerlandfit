@@ -35,7 +35,7 @@ class Seo
     public static function entries(): Collection
     {
         return collect(array_keys(config('seo.pages')))->map(fn ($name) => self::page($name))
-            ->concat(collect(array_keys(config('site.trainings')))->map(fn ($slug) => self::training($slug)))
+            ->concat(collect(array_keys(Site::trainings()))->map(fn ($slug) => self::training($slug)))
             ->concat(collect(array_keys(config('site.locations')))->map(fn ($slug) => self::location($slug)))
             ->concat(Blog::all()->map(fn ($post) => self::post($post->slug)))
             ->filter()
@@ -57,22 +57,21 @@ class Seo
 
     public static function training(string $slug): ?array
     {
-        $training = config("site.trainings.$slug");
+        $training = Site::training($slug);
 
         if (! $training) {
             return null;
         }
 
-        $meta = config("seo.trainings.$slug", []);
         $path = route('training', $slug, false);
 
         return self::make([
             'name' => $training['title'],
             'group' => 'Trainingen',
-            'title' => $meta['title'] ?? $training['title'],
-            'description' => $meta['description'] ?? $training['intro'],
+            'title' => $training['seo_title'] ?: $training['title'],
+            'description' => $training['seo_description'] ?: $training['intro'],
             'image' => $training['image'] ?? null,
-            ...$meta,
+            'updated' => $training['updated'] ?? null,
         ], $path, [['Trainingen', route('trainingen', absolute: false)], [$training['title'], $path]]);
     }
 

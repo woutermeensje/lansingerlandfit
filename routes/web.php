@@ -26,14 +26,6 @@ Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('blogs.show')
 Route::post('/contact', [ContactController::class, 'store'])->middleware('throttle:6,1')->name('contact.store');
 Route::post('/reserveren', [ReservationController::class, 'store'])->middleware('throttle:10,1')->name('reservations.store');
 
-// Trainingen en locaties staan, net als op de oude site, direct onder de root.
-Route::get('/{training}', [PageController::class, 'training'])
-    ->whereIn('training', array_keys(config('site.trainings')))
-    ->name('training');
-Route::get('/{location}', [PageController::class, 'location'])
-    ->whereIn('location', array_keys(config('site.locations')))
-    ->name('locatie');
-
 // Oude WordPress-links.
 Route::permanentRedirect('/zwangerschapstraining', '/zwangerschapsfitness');
 Route::permanentRedirect('/lidmaatschap', '/tarieven');
@@ -53,3 +45,14 @@ Route::get('/robots.txt', fn () => response(implode("\n", [
     '',
     'Sitemap: '.Seo::url('sitemap.xml'),
 ])."\n")->header('Content-Type', 'text/plain; charset=UTF-8'))->name('robots');
+
+require __DIR__.'/admin.php';
+
+// Trainingen en locaties staan, net als op de oude site, direct onder de root.
+// Deze routes staan bewust onderaan: ze vangen alles op wat hierboven niet matcht.
+Route::get('/{location}', [PageController::class, 'location'])
+    ->whereIn('location', array_keys(config('site.locations')))
+    ->name('locatie');
+Route::get('/{training}', [PageController::class, 'training'])
+    ->where('training', '[a-z0-9]+(?:-[a-z0-9]+)*')
+    ->name('training');

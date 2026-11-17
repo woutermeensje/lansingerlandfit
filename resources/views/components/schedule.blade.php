@@ -2,7 +2,7 @@
 
 @php
     $trainer = config('site.trainer');
-    $trainings = config('site.trainings');
+    $trainings = \App\Support\Site::trainings();
     $payload = function (array $lesson) {
         return [
             'id' => $lesson['id'],

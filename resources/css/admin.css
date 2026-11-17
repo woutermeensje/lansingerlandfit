@@ -1,0 +1,216 @@
+/*
+ * Beheeromgeving (/admin)
+ * Opbouw zoals de inlog-omgeving: balk van ~65px met dunne rand onderaan,
+ * inhoud max. 1100px breed, witte blokken met 1px rand en 5px radius, geen schaduw.
+ * Knoppen, formulieren en tekst staan in buttons.css, forms.css en text.css.
+ */
+
+@layer components {
+    .admin-bar {
+        @apply border-b border-line bg-white;
+    }
+
+    .admin-bar__inner {
+        @apply mx-auto flex max-w-[1100px] flex-wrap items-center gap-x-5 gap-y-1 px-4 py-3;
+        min-height: 65px;
+    }
+
+    .admin-bar__brand {
+        @apply flex items-center gap-2;
+    }
+
+    .admin-bar__badge {
+        @apply rounded-base border border-line px-2 py-0.5 text-xs font-semibold text-gray-600;
+    }
+
+    .admin-nav {
+        @apply flex flex-1 flex-wrap items-center gap-1;
+    }
+
+    .admin-nav__link {
+        @apply rounded-base px-2.5 py-2 text-sm font-medium whitespace-nowrap text-navy-700 hover:bg-navy-50;
+    }
+
+    .admin-nav__link.is-active {
+        @apply bg-navy-50 font-semibold;
+    }
+
+    .admin-bar__actions {
+        @apply flex items-center gap-1;
+    }
+
+    @media (max-width: 960px) {
+        .admin-nav {
+            @apply order-last basis-full;
+        }
+
+        .admin-bar__actions {
+            @apply ml-auto;
+        }
+
+        .admin-nav {
+            @apply -mx-2.5;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .admin-bar__site {
+            @apply hidden;
+        }
+    }
+
+    .admin-shell {
+        @apply mx-auto w-full max-w-[1100px] px-4 py-8 sm:py-10;
+    }
+
+    .admin-shell--narrow {
+        @apply max-w-md;
+    }
+
+    .admin-page-head {
+        @apply mb-6 flex flex-wrap items-end justify-between gap-4;
+    }
+
+    .admin-page-head > div {
+        @apply max-w-2xl;
+    }
+
+    .admin-card {
+        @apply rounded-base border border-line bg-white p-6 sm:p-8;
+    }
+
+    .admin-form {
+        @apply flex max-w-2xl flex-col gap-5;
+    }
+
+    .admin-card.admin-form {
+        @apply max-w-none;
+    }
+
+    .admin-form__row {
+        @apply grid gap-5 sm:grid-cols-2;
+    }
+
+    .admin-form__actions {
+        @apply flex flex-wrap items-center gap-2 border-t border-line pt-5;
+    }
+
+    .admin-fieldset {
+        @apply flex flex-col gap-5 rounded-base border border-line p-5;
+    }
+
+    .admin-fieldset > legend {
+        @apply px-1;
+    }
+
+    .admin-thumb {
+        @apply mb-3 aspect-[4/3] w-48 rounded-base border border-line object-cover;
+    }
+
+    .admin-stack {
+        @apply grid gap-6 lg:grid-cols-2 lg:items-start;
+    }
+
+    .admin-alert {
+        @apply mb-6 rounded-base border border-line px-5 py-4 text-sm font-medium;
+    }
+
+    .admin-alert--success {
+        @apply bg-mint-100 text-mint-600;
+    }
+
+    .admin-alert--error {
+        @apply bg-red-50 text-red-700;
+    }
+
+    .admin-empty {
+        @apply rounded-base border border-dashed border-line bg-white p-6 text-center text-sm text-gray-500;
+    }
+
+    td.admin-empty {
+        @apply rounded-none border-0;
+    }
+
+    .admin-section {
+        @apply mt-10 flex flex-col gap-4;
+    }
+
+    /* Tegels op het dashboard */
+    .admin-tiles {
+        @apply grid gap-4 sm:grid-cols-3;
+    }
+
+    .admin-tile {
+        @apply flex flex-col gap-1 rounded-base border border-line bg-white p-5 transition hover:border-mint-500;
+    }
+
+    .admin-tile__title {
+        @apply text-lg font-semibold text-navy-700;
+    }
+
+    /* Tabellen */
+    .admin-table-wrap {
+        @apply overflow-x-auto rounded-base border border-line bg-white;
+    }
+
+    .admin-table {
+        @apply w-full text-left text-sm;
+    }
+
+    .admin-table th {
+        @apply border-b border-line bg-navy-50 px-4 py-3 text-xs font-semibold uppercase tracking-wider text-gray-600;
+    }
+
+    .admin-table td {
+        @apply border-b border-line px-4 py-3 align-middle;
+    }
+
+    .admin-table tr:last-child td {
+        @apply border-b-0;
+    }
+
+    /* Lesrooster per dag */
+    .admin-days {
+        @apply flex flex-col gap-4;
+    }
+
+    .admin-day {
+        @apply rounded-base border border-line bg-white;
+    }
+
+    .admin-day__head {
+        @apply flex items-center justify-between gap-4 border-b border-line px-5 py-3;
+    }
+
+    .admin-day__title {
+        @apply text-base;
+    }
+
+    .admin-day__empty {
+        @apply px-5 py-4 text-sm text-gray-500;
+    }
+
+    .admin-row {
+        @apply flex flex-wrap items-center gap-x-5 gap-y-2 border-b border-line px-5 py-3;
+    }
+
+    .admin-row:last-child {
+        @apply border-b-0;
+    }
+
+    .admin-row__time {
+        @apply w-28 shrink-0 text-sm font-semibold text-mint-600 tabular-nums;
+    }
+
+    .admin-row__main {
+        @apply flex min-w-0 flex-1 basis-56 flex-col;
+    }
+
+    .admin-row__title {
+        @apply font-semibold text-navy-700;
+    }
+
+    .admin-row__actions {
+        @apply flex items-center gap-2;
+    }
+}

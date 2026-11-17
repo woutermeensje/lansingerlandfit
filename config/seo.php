@@ -124,37 +124,6 @@ return [
     ],
 
     /*
-    | Trainingspagina's, op slug (zie config/site.php). Naam en afbeelding
-    | komen uit de trainingsconfig.
-    */
-    'trainings' => [
-        'bootcamp-outdoor' => [
-            'title' => 'Bootcamp Outdoor in Lansingerland en Pijnacker',
-            'description' => 'Outdoor bootcamp in kleine groepen in Berkel en Rodenrijs en Pijnacker. Kracht en conditie in de buitenlucht, voor ieder niveau. Gratis proefles!',
-        ],
-        'xco-walking' => [
-            'title' => 'Xco Walking in Berkel en Rodenrijs en Nootdorp',
-            'description' => 'Powerwalking met XCO-tubes in De Groenzoom en rond de Dobbeplas. Low-impact training voor kracht, conditie en houding. Probeer een gratis proefles.',
-        ],
-        'zwangerschapsfitness' => [
-            'title' => 'Zwangerschapsfitness in Lansingerland',
-            'description' => 'Veilig fit blijven tijdens je zwangerschap met buitentrainingen in kleine groepen, afgestemd per trimester. In Lansingerland, Pijnacker en Nootdorp.',
-        ],
-        'personal-training' => [
-            'title' => 'Personal training in Lansingerland en Pijnacker',
-            'description' => 'Personal training op maat in Lansingerland, Pijnacker en Nootdorp. Eén-op-één begeleiding bij jou in de buurt, gericht op afvallen, kracht of conditie.',
-        ],
-        'bedrijfsbootcamp' => [
-            'title' => 'Bedrijfsbootcamp voor teams in Lansingerland',
-            'description' => 'Outdoor bedrijfsbootcamp op of bij jullie bedrijfslocatie in Lansingerland en omgeving. Fittere medewerkers en een betere teamspirit. Offerte op maat.',
-        ],
-        'seniorensport' => [
-            'title' => 'Seniorensport en Seniorenfit in Lansingerland',
-            'description' => 'Seniorenfit: kracht-, balans- en conditietraining voor senioren in een gezellige groep, buiten in Berkel en Rodenrijs en Nootdorp. Train gratis mee.',
-        ],
-    ],
-
-    /*
     | Locatiepagina's, op slug (zie config/site.php).
     */
     'locations' => [

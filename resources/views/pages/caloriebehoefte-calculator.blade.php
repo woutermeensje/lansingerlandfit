@@ -120,7 +120,7 @@
 
             <div class="hidden" data-calc-result>
                 <p class="eyebrow" data-calc-goal-label>Om af te vallen</p>
-                <p class="mt-2 text-5xl font-bold tracking-tight text-navy-700 sm:text-6xl"><span data-calc-target>0</span> <span class="text-lg font-semibold text-gray-500">kcal per dag</span></p>
+                <p class="mt-2 stat-number text-navy-700"><span data-calc-target>0</span> <span class="text-lg font-semibold text-gray-500">kcal per dag</span></p>
                 <p class="mt-2 text-sm font-medium text-mint-600" data-calc-change></p>
                 <p class="form-error mt-4 hidden" data-calc-floor></p>
 
@@ -173,20 +173,20 @@
     <section class="bg-white py-16">
         <div class="container-site">
             <p class="eyebrow">Zo werkt het</p>
-            <h2 class="mt-3 max-w-2xl text-3xl sm:text-4xl">Hoe wordt je caloriebehoefte berekend?</h2>
+            <h2 class="mt-3 max-w-2xl heading-2">Hoe wordt je caloriebehoefte berekend?</h2>
             <div class="mt-10 grid gap-5 md:grid-cols-3">
                 <div class="card p-6">
-                    <p class="text-3xl font-bold text-mint-500">1</p>
+                    <p class="step-number">1</p>
                     <h3 class="mt-2 text-xl">Ruststofwisseling</h3>
                     <p class="mt-2 leading-relaxed text-gray-600">Wat je lichaam in rust verbruikt voor ademhaling, hartslag en lichaamstemperatuur. Dit is meestal 60 à 70% van je totale verbruik.</p>
                 </div>
                 <div class="card p-6">
-                    <p class="text-3xl font-bold text-mint-500">2</p>
+                    <p class="step-number">2</p>
                     <h3 class="mt-2 text-xl">Activiteit</h3>
                     <p class="mt-2 leading-relaxed text-gray-600">Je ruststofwisseling keer je activiteitsfactor (1,2 tot 1,9) geeft je totale dagelijkse energieverbruik: je onderhoudsniveau.</p>
                 </div>
                 <div class="card p-6">
-                    <p class="text-3xl font-bold text-mint-500">3</p>
+                    <p class="step-number">3</p>
                     <h3 class="mt-2 text-xl">Je doel</h3>
                     <p class="mt-2 leading-relaxed text-gray-600">Om af te vallen eet je 250 à 750 kcal minder, om aan te komen 250 à 500 kcal meer dan je onderhoudsniveau.</p>
                 </div>

@@ -28,7 +28,7 @@
         <div class="container-site grid items-center gap-12 py-14 lg:min-h-[500px] lg:grid-cols-2 lg:py-10">
             <div>
                 <p class="eyebrow">Duo training · Lansingerland</p>
-                <h1 class="mt-4 text-[24px] font-semibold leading-tight">Samen trainen, dubbel zo leuk.</h1>
+                <h1 class="mt-4 heading-1">Samen trainen, dubbel zo leuk.</h1>
                 <p class="mt-6 max-w-xl text-[15px] font-normal leading-relaxed text-[#333]">Train met z'n tweeën onder persoonlijke begeleiding in de buitenlucht. Met je partner, een vriend(in) of collega werk je aan kracht, conditie en jullie eigen doelen.</p>
                 <div class="mt-8 flex flex-wrap gap-3">
                     <a href="#aanvragen" class="btn btn-primary">Duo training aanvragen</a>
@@ -45,7 +45,7 @@
     {{-- Voordelen --}}
     <section class="container-site py-16">
         <p class="eyebrow">Waarom duo training?</p>
-        <h2 class="mt-3 max-w-2xl text-3xl sm:text-4xl">Het beste van personal training, samen met je sportmaatje</h2>
+        <h2 class="mt-3 max-w-2xl heading-2">Het beste van personal training, samen met je sportmaatje</h2>
         <div class="mt-10 grid gap-5 sm:grid-cols-2">
             @foreach ($benefits as [$title, $text])
                 <div class="card p-6">
@@ -61,7 +61,7 @@
         <div class="container-site grid gap-12 lg:grid-cols-2">
             <div>
                 <p class="eyebrow">Voor wie?</p>
-                <h2 class="mt-3 text-3xl sm:text-4xl">Train met wie jij wilt</h2>
+                <h2 class="mt-3 heading-2">Train met wie jij wilt</h2>
                 <ul class="mt-8 space-y-4">
                     @foreach ($audiences as $audience)
                         <li class="flex gap-3">
@@ -75,7 +75,7 @@
             </div>
             <div>
                 <p class="eyebrow">Zo werkt het</p>
-                <h2 class="mt-3 text-3xl sm:text-4xl">In drie stappen aan de slag</h2>
+                <h2 class="mt-3 heading-2">In drie stappen aan de slag</h2>
                 <ol class="mt-8 space-y-5">
                     @foreach ($steps as $i => $step)
                         <li class="flex gap-4">
@@ -91,7 +91,7 @@
     {{-- Veelgestelde vragen --}}
     <section class="container-site py-16">
         <p class="eyebrow">Veelgestelde vragen</p>
-        <h2 class="mt-3 text-3xl sm:text-4xl">Goed om te weten</h2>
+        <h2 class="mt-3 heading-2">Goed om te weten</h2>
         <div class="mt-8 max-w-3xl space-y-3">
             @foreach ($faqs as [$question, $answer])
                 <details class="card group p-5">
@@ -109,7 +109,7 @@
     <section id="aanvragen" class="scroll-mt-24 py-16">
         <div class="container-site grid gap-10 lg:grid-cols-[3fr_2fr]">
             <div class="card p-6 sm:p-8">
-                <h2 class="text-3xl">Vraag een duo training aan</h2>
+                <h2 class="heading-2">Vraag een duo training aan</h2>
                 <p class="mt-3 text-gray-600">Vertel wie je trainingsmaatje is en wat jullie willen bereiken. Ik neem zo snel mogelijk contact met je op.</p>
                 <x-contact-form class="mt-6 space-y-5" source="duo-training" interest="Duo training" :show-interest="false" submit="Duo training aanvragen" />
             </div>

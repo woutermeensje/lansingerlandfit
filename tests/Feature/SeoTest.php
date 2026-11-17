@@ -3,10 +3,13 @@
 namespace Tests\Feature;
 
 use App\Support\Seo;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class SeoTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function test_every_page_has_unique_seo_title_and_description(): void
     {
         $entries = Seo::entries();

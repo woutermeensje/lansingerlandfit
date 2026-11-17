@@ -12,7 +12,7 @@
     <section id="weekrooster" class="bg-white py-16">
         <div class="container-site">
             <p class="eyebrow">Rooster</p>
-            <h2 class="mt-3 text-3xl sm:text-4xl">Ons weekrooster</h2>
+            <h2 class="mt-3 heading-2">Ons weekrooster</h2>
             <div class="mt-8">
                 <x-schedule :days="$days" />
             </div>
@@ -21,7 +21,7 @@
 
     <section class="container-site py-16">
         <p class="eyebrow">Locaties</p>
-        <h2 class="mt-3 text-3xl sm:text-4xl">Hier trainen we</h2>
+        <h2 class="mt-3 heading-2">Hier trainen we</h2>
         <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             @foreach ($locations as $slug => $location)
                 <a href="{{ route('locatie', $slug) }}" class="card group overflow-hidden">

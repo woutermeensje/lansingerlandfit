@@ -37,3 +37,45 @@
         @apply flex size-8 shrink-0 items-center justify-center rounded-full bg-mint-500 text-sm text-white;
     }
 }
+
+/* ── Koppen en cijfers: nooit groter dan 24px (design.md) ── */
+@layer components {
+    /* Paginatitel (h1) */
+    .heading-1 {
+        @apply text-2xl leading-tight;
+    }
+
+    /* Sectiekop (h2) */
+    .heading-2 {
+        @apply text-xl leading-snug;
+    }
+
+    /* Groot getal: prijs, uitkomst calculator */
+    .stat-number {
+        @apply text-2xl font-bold;
+    }
+
+    /* Stapnummer in een kaart (1, 2, 3) */
+    .step-number {
+        @apply text-2xl font-bold text-mint-500;
+    }
+}
+
+/* ── Beheer (/admin) ── */
+@layer components {
+    .admin-muted {
+        @apply text-gray-600;
+    }
+
+    .admin-link {
+        @apply font-medium text-mint-600 hover:text-navy-700;
+    }
+
+    .admin-crumb {
+        @apply mb-1 text-sm;
+    }
+
+    .admin-badge {
+        @apply ml-2 inline-block rounded-base bg-mint-100 px-2 py-0.5 align-middle text-xs font-semibold text-mint-600;
+    }
+}

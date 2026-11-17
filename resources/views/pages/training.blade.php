@@ -5,7 +5,7 @@
                 <nav class="text-sm text-gray-500" aria-label="Kruimelpad">
                     <a href="{{ route('trainingen') }}" class="hover:text-mint-600">Trainingen</a> <span aria-hidden="true">/</span> {{ $training['title'] }}
                 </nav>
-                <h1 class="mt-4 text-4xl sm:text-5xl">{{ $training['title'] }}</h1>
+                <h1 class="mt-4 heading-1">{{ $training['title'] }}</h1>
                 <p class="mt-5 text-lg leading-relaxed text-gray-600">{{ $training['intro'] }}</p>
                 <div class="mt-8 flex flex-wrap gap-3">
                     <a href="{{ route('proefles') }}" class="btn btn-primary">Gratis proefles</a>
@@ -41,7 +41,7 @@
     @if ($lessons->isNotEmpty())
         <section class="bg-white py-14">
             <div class="container-site">
-                <h2 class="text-3xl">Wanneer train je mee?</h2>
+                <h2 class="heading-2">Wanneer train je mee?</h2>
                 <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     @foreach ($lessons as $lesson)
                         <div class="rounded-base bg-navy-50 p-5">
@@ -57,7 +57,7 @@
     @endif
 
     <section class="container-site py-14">
-        <h2 class="text-3xl">Andere trainingen</h2>
+        <h2 class="heading-2">Andere trainingen</h2>
         <div class="mt-8 grid gap-6 md:grid-cols-3">
             @foreach ($others as $otherSlug => $other)
                 <x-training-card :slug="$otherSlug" :training="$other" cta="Bekijk training" />

@@ -99,3 +99,20 @@
         }
     }
 }
+
+/* ── Beheer (/admin) ── */
+@layer components {
+    .btn-danger {
+        @apply border border-line bg-white text-red-700 hover:border-red-700 hover:bg-red-50 focus-visible:ring-red-600;
+    }
+
+    /* Rustige knop zonder vlak, bijv. Annuleren en Uitloggen */
+    .btn-quiet {
+        @apply text-navy-700 hover:bg-navy-50 focus-visible:ring-navy-700;
+    }
+
+    /* Uitloggen in de beheerbalk: zelfde maat als de menulinks */
+    .admin-bar .btn-quiet {
+        @apply px-2.5 py-2 font-medium;
+    }
+}

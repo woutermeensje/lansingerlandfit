@@ -27,7 +27,7 @@
         <div class="container-site grid items-center gap-12 py-14 lg:min-h-[500px] lg:grid-cols-2 lg:py-10">
             <div>
                 <p class="eyebrow">Voedingsadvies · Lansingerland</p>
-                <h1 class="mt-4 text-[24px] font-semibold leading-tight">Gezond eten dat bij je leven past.</h1>
+                <h1 class="mt-4 heading-1">Gezond eten dat bij je leven past.</h1>
                 <p class="mt-6 max-w-xl text-[15px] font-normal leading-relaxed text-[#333]">Praktisch voedingsadvies op maat, zonder ingewikkelde regels. Zodat je meer energie hebt, je doelen haalt en je training het maximale oplevert.</p>
                 <div class="mt-8 flex flex-wrap gap-3">
                     <a href="#aanvragen" class="btn btn-primary">Voedingsadvies aanvragen</a>
@@ -43,7 +43,7 @@
 
     <section class="container-site py-16">
         <p class="eyebrow">Waar kan ik je mee helpen?</p>
-        <h2 class="mt-3 max-w-2xl text-3xl sm:text-4xl">Advies afgestemd op jouw doel</h2>
+        <h2 class="mt-3 max-w-2xl heading-2">Advies afgestemd op jouw doel</h2>
         <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             @foreach ($topics as [$title, $text])
                 <div class="card p-6">
@@ -58,7 +58,7 @@
         <div class="container-site grid gap-12 lg:grid-cols-2">
             <div>
                 <p class="eyebrow">Wat krijg je?</p>
-                <h2 class="mt-3 text-3xl sm:text-4xl">Dit zit erin</h2>
+                <h2 class="mt-3 heading-2">Dit zit erin</h2>
                 <ul class="mt-8 space-y-4">
                     @foreach ($includes as $item)
                         <li class="flex gap-3">
@@ -72,7 +72,7 @@
             </div>
             <div>
                 <p class="eyebrow">Veelgestelde vragen</p>
-                <h2 class="mt-3 text-3xl sm:text-4xl">Goed om te weten</h2>
+                <h2 class="mt-3 heading-2">Goed om te weten</h2>
                 <div class="mt-8 space-y-3">
                     @foreach ($faqs as [$question, $answer])
                         <details class="card group p-5">
@@ -91,7 +91,7 @@
     <section id="aanvragen" class="scroll-mt-24 py-16">
         <div class="container-site grid gap-10 lg:grid-cols-[3fr_2fr]">
             <div class="card p-6 sm:p-8">
-                <h2 class="text-3xl">Vraag voedingsadvies aan</h2>
+                <h2 class="heading-2">Vraag voedingsadvies aan</h2>
                 <p class="mt-3 text-gray-600">Vertel waar je tegenaan loopt en wat je wilt bereiken. Ik neem zo snel mogelijk contact met je op.</p>
                 <x-contact-form class="mt-6 space-y-5" source="voedings-advies" interest="Voedingsadvies" :show-interest="false" submit="Voedingsadvies aanvragen" />
             </div>

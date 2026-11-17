@@ -2,10 +2,14 @@
 
 namespace Tests\Feature;
 
+use App\Support\Site;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class PagesTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function test_static_pages_render(): void
     {
         foreach (['/', '/lesrooster', '/tarieven', '/trainingen', '/over-ons', '/contact', '/gratis-proefles', '/duo-training', '/caloriebehoefte-calculator', '/sportparken-lansingerland', '/afval-begeleiding', '/voedings-advies', '/blogs', '/blogs/waarom-buiten-sporten'] as $url) {
@@ -15,8 +19,10 @@ class PagesTest extends TestCase
 
     public function test_training_and_location_pages_render(): void
     {
-        foreach (array_keys(config('site.trainings')) as $slug) {
-            $this->get("/$slug")->assertOk()->assertSee(config("site.trainings.$slug.title"));
+        $this->assertCount(6, Site::trainings());
+
+        foreach (Site::trainings() as $slug => $training) {
+            $this->get("/$slug")->assertOk()->assertSee($training['title']);
         }
 
         foreach (array_keys(config('site.locations')) as $slug) {

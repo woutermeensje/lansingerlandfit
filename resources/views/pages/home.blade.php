@@ -4,7 +4,7 @@
         <div class="container-site grid items-center gap-12 py-14 lg:min-h-[500px] lg:grid-cols-2 lg:py-10">
             <div>
                 <p class="eyebrow">Lansingerlandfit.nl</p>
-                <h1 class="mt-4 text-[24px] font-semibold leading-tight">Buiten sporten in Lansingerland, Pijnacker en Nootdorp.</h1>
+                <h1 class="mt-4 heading-1">Buiten sporten in Lansingerland, Pijnacker en Nootdorp.</h1>
                 <p class="mt-6 max-w-xl text-[15px] font-normal leading-relaxed text-[#333]">Buitensporten, groepslessen, personal training en zwangerschapstraining. Bekijk het aanbod of plan een proefles in.</p>
                 <div class="mt-8 flex flex-wrap gap-3">
                     <a href="{{ route('proefles') }}" class="btn btn-primary">Gratis proefles</a>
@@ -31,7 +31,7 @@
     <section class="container-site grid gap-12 py-10 lg:grid-cols-2">
         <div>
             <p class="eyebrow">Lansingerlandfit.nl</p>
-            <h2 class="mt-3 text-3xl sm:text-4xl">Buiten sporten in Lansingerland, Pijnacker of Nootdorp!</h2>
+            <h2 class="mt-3 heading-2">Buiten sporten in Lansingerland, Pijnacker of Nootdorp!</h2>
         </div>
         <div class="prose-site">
             <p>Trainen in de buitenlucht is effectiever, leuker en motiverender dan binnen. Frisse lucht, daglicht en een steeds wisselende omgeving zorgen ervoor dat je met plezier blijft sporten.</p>
@@ -44,7 +44,7 @@
         <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
                 <p class="eyebrow">Ons aanbod</p>
-                <h2 class="mt-3 text-3xl sm:text-4xl">Onze lessen</h2>
+                <h2 class="mt-3 heading-2">Onze lessen</h2>
                 <p class="mt-3 max-w-xl text-gray-600">Benieuwd wanneer en waar we trainen? Bekijk het <a href="{{ route('lesrooster') }}" class="font-semibold text-mint-600 underline underline-offset-4">complete lesrooster</a>.</p>
             </div>
             <a href="{{ route('trainingen') }}" class="btn btn-navy self-start sm:self-auto">Alle trainingen</a>
@@ -67,7 +67,7 @@
             <img src="{{ asset('images/xco-walking.png') }}" alt="Xco Walking met Cindy" loading="lazy" class="aspect-[3/2] w-full rounded-base object-cover">
             <div>
                 <p class="eyebrow">Waarom LansingerlandFit?</p>
-                <h2 class="mt-3 text-3xl sm:text-4xl">Sporten met plezier en persoonlijke aandacht</h2>
+                <h2 class="mt-3 heading-2">Sporten met plezier en persoonlijke aandacht</h2>
                 <ul class="mt-8 space-y-4">
                     @foreach (config('site.usps') as $usp)
                         <li class="flex gap-3">

@@ -7,7 +7,7 @@
                 <article @class(['flex flex-col rounded-base p-8 border', 'bg-navy-700 text-white border-navy-700 lg:-translate-y-3' => $plan['highlight'] ?? false, 'bg-white border-line' => ! ($plan['highlight'] ?? false)])>
                     <h2 @class(['text-2xl', '!text-white' => $plan['highlight'] ?? false])>{{ $plan['title'] }}</h2>
                     <p class="mt-6 flex items-baseline gap-2">
-                        <span class="text-5xl font-extrabold">{{ $plan['price'] }}</span>
+                        <span class="stat-number">{{ $plan['price'] }}</span>
                         <span @class(['text-sm', 'text-navy-100' => $plan['highlight'] ?? false, 'text-gray-500' => ! ($plan['highlight'] ?? false)])>{{ $plan['unit'] }}</span>
                     </p>
                     @if ($plan['extra'])

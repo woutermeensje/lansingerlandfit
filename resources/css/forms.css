@@ -67,3 +67,43 @@
         @apply cursor-pointer text-sm font-medium text-mint-600;
     }
 }
+
+/* ── Beheer (/admin) ── */
+@layer components {
+    .form-hint {
+        @apply mt-1.5 text-xs leading-relaxed text-gray-500;
+    }
+
+    .form-field-error {
+        @apply mt-1.5 text-xs font-medium text-red-700;
+    }
+
+    .form-check {
+        @apply flex cursor-pointer items-center gap-2 text-sm text-ink;
+    }
+
+    .form-check input {
+        @apply size-4 accent-mint-600;
+    }
+
+    textarea.form-input {
+        @apply leading-relaxed;
+    }
+
+    input[type='file'].form-input {
+        @apply py-2.5;
+    }
+
+    /* Invoerveld met vaste tekst ervoor (domeinnaam bij de URL van een training) */
+    .form-prefix {
+        @apply flex items-stretch;
+    }
+
+    .form-prefix__text {
+        @apply flex items-center rounded-l-base border border-r-0 border-line bg-navy-50 px-3 text-sm text-gray-600;
+    }
+
+    .form-prefix .form-input {
+        @apply rounded-l-none;
+    }
+}

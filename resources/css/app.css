@@ -32,6 +32,7 @@
 @import './header.css';
 @import './footer.css';
 @import './schedule.css';
+@import './admin.css';
 
 @layer base {
     html {

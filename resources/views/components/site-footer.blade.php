@@ -27,7 +27,7 @@
         <div class="site-footer__column">
             <h2 class="site-footer__heading">Trainingen</h2>
             <ul class="site-footer__links">
-                @foreach (config('site.trainings') as $slug => $training)
+                @foreach (\App\Support\Site::trainings() as $slug => $training)
                     <li><a href="{{ route('training', $slug) }}">{{ $training['title'] }}</a></li>
                 @endforeach
             </ul>
@@ -44,8 +44,10 @@
         </div>
     </div>
 
-    <div class="site-footer__bottom">
-        <span>&copy; {{ date('Y') }} {{ config('site.name') }} &middot; <a href="{{ route('sitemap') }}">Sitemap</a></span>
-        <span>Buiten sporten in {{ implode(', ', array_slice($regions, 0, -1)) }} en {{ last($regions) }}</span>
+    <div class="site-footer__bottom-wrap">
+        <div class="site-footer__bottom">
+            <span>&copy; {{ date('Y') }} {{ config('site.name') }} &middot; <a href="{{ route('sitemap') }}">Sitemap</a></span>
+            <span>Buiten sporten in {{ implode(', ', array_slice($regions, 0, -1)) }} en {{ last($regions) }}</span>
+        </div>
     </div>
 </footer>

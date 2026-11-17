@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Support\Schedule;
+use App\Support\Site;
 use Illuminate\View\View;
 
 class PageController extends Controller
@@ -10,8 +11,8 @@ class PageController extends Controller
     public function home(): View
     {
         return view('pages.home', [
-            'featured' => collect(config('site.trainings'))->only(['personal-training', 'xco-walking', 'bedrijfsbootcamp']),
-            'trainings' => config('site.trainings'),
+            'featured' => collect(Site::trainings())->only(['personal-training', 'xco-walking', 'bedrijfsbootcamp']),
+            'trainings' => Site::trainings(),
         ]);
     }
 
@@ -22,13 +23,13 @@ class PageController extends Controller
 
     public function prices(): View
     {
-        return view('pages.tarieven', ['prices' => config('site.prices')]);
+        return view('pages.tarieven', ['prices' => Site::prices()]);
     }
 
     public function trainings(): View
     {
         return view('pages.trainingen', [
-            'trainings' => config('site.trainings'),
+            'trainings' => Site::trainings(),
             'locations' => config('site.locations'),
             'days' => Schedule::byDay(),
         ]);
@@ -36,13 +37,13 @@ class PageController extends Controller
 
     public function training(string $slug): View
     {
-        $training = config("site.trainings.$slug") ?? abort(404);
+        $training = Site::training($slug) ?? abort(404);
 
         return view('pages.training', [
             'slug' => $slug,
             'training' => $training,
             'lessons' => Schedule::forTraining($slug),
-            'others' => collect(config('site.trainings'))->except($slug)->take(3),
+            'others' => collect(Site::trainings())->except($slug)->take(3),
         ]);
     }
 

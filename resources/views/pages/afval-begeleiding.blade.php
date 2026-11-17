@@ -26,7 +26,7 @@
         <div class="container-site grid items-center gap-12 py-14 lg:min-h-[500px] lg:grid-cols-2 lg:py-10">
             <div>
                 <p class="eyebrow">Afvalbegeleiding · Lansingerland</p>
-                <h1 class="mt-4 text-[24px] font-semibold leading-tight">Afvallen zonder crashdieet.</h1>
+                <h1 class="mt-4 heading-1">Afvallen zonder crashdieet.</h1>
                 <p class="mt-6 max-w-xl text-[15px] font-normal leading-relaxed text-[#333]">Met persoonlijke begeleiding, training in de buitenlucht en haalbare voedingsadviezen werk je aan een gezond gewicht dat je ook vasthoudt.</p>
                 <div class="mt-8 flex flex-wrap gap-3">
                     <a href="#aanvragen" class="btn btn-primary">Kennismaking aanvragen</a>
@@ -42,7 +42,7 @@
 
     <section class="container-site py-16">
         <p class="eyebrow">Zo pakken we het aan</p>
-        <h2 class="mt-3 max-w-2xl text-3xl sm:text-4xl">Bewegen, voeding en motivatie samen</h2>
+        <h2 class="mt-3 max-w-2xl heading-2">Bewegen, voeding en motivatie samen</h2>
         <div class="mt-10 grid gap-5 sm:grid-cols-2">
             @foreach ($benefits as [$title, $text])
                 <div class="card p-6">
@@ -57,7 +57,7 @@
         <div class="container-site grid gap-12 lg:grid-cols-2">
             <div>
                 <p class="eyebrow">Zo werkt het</p>
-                <h2 class="mt-3 text-3xl sm:text-4xl">Van kennismaking tot resultaat</h2>
+                <h2 class="mt-3 heading-2">Van kennismaking tot resultaat</h2>
                 <ol class="mt-8 space-y-5">
                     @foreach ($steps as $i => $step)
                         <li class="flex gap-4">
@@ -69,7 +69,7 @@
             </div>
             <div>
                 <p class="eyebrow">Veelgestelde vragen</p>
-                <h2 class="mt-3 text-3xl sm:text-4xl">Goed om te weten</h2>
+                <h2 class="mt-3 heading-2">Goed om te weten</h2>
                 <div class="mt-8 space-y-3">
                     @foreach ($faqs as [$question, $answer])
                         <details class="card group p-5">
@@ -88,7 +88,7 @@
     <section id="aanvragen" class="scroll-mt-24 py-16">
         <div class="container-site grid gap-10 lg:grid-cols-[3fr_2fr]">
             <div class="card p-6 sm:p-8">
-                <h2 class="text-3xl">Vraag een kennismaking aan</h2>
+                <h2 class="heading-2">Vraag een kennismaking aan</h2>
                 <p class="mt-3 text-gray-600">Vertel kort wat je doel is. Ik neem zo snel mogelijk contact met je op voor een vrijblijvend gesprek.</p>
                 <x-contact-form class="mt-6 space-y-5" source="afval-begeleiding" interest="Afvalbegeleiding" :show-interest="false" submit="Kennismaking aanvragen" />
             </div>

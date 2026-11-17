@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Mail\NewContactRequest;
 use App\Mail\NewReservation;
+use App\Models\Lesson;
 use App\Support\Schedule;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
@@ -86,27 +87,27 @@ class FormsTest extends TestCase
     public function test_reservation_for_upcoming_lesson(): void
     {
         Mail::fake();
-        $lesson = Schedule::find('vr-bootcamp');
+        $lesson = Schedule::find((string) Lesson::where('name', 'Bootcamp Outdoor')->where('day', 5)->value('id'));
         $date = Schedule::upcomingDates($lesson)->first()->toDateString();
 
         $this->from('/lesrooster')->post('/reserveren', [
-            'lesson_id' => 'vr-bootcamp',
+            'lesson_id' => $lesson['id'],
             'date' => $date,
             'name' => 'Piet',
             'email' => 'piet@example.com',
         ])->assertRedirect('/lesrooster')->assertSessionHas('status');
 
-        $this->assertDatabaseHas('reservations', ['lesson_id' => 'vr-bootcamp', 'email' => 'piet@example.com']);
+        $this->assertDatabaseHas('reservations', ['lesson_id' => $lesson['id'], 'email' => 'piet@example.com']);
         Mail::assertSent(NewReservation::class, fn ($m) => $m->hasTo('piet@example.com'));
     }
 
     public function test_reservation_rejects_wrong_weekday(): void
     {
-        $lesson = Schedule::find('vr-bootcamp');
+        $lesson = Schedule::find((string) Lesson::where('name', 'Bootcamp Outdoor')->where('day', 5)->value('id'));
         $wrong = Schedule::upcomingDates($lesson)->first()->addDay()->toDateString();
 
         $this->post('/reserveren', [
-            'lesson_id' => 'vr-bootcamp',
+            'lesson_id' => $lesson['id'],
             'date' => $wrong,
             'name' => 'Piet',
             'email' => 'piet@example.com',

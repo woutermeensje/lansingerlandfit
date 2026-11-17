@@ -28,9 +28,9 @@
 
     <section class="bg-white py-14">
         <div class="container-site">
-            <h2 class="text-3xl">Onze trainingen</h2>
+            <h2 class="heading-2">Onze trainingen</h2>
             <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                @foreach (config('site.trainings') as $slug => $training)
+                @foreach (\App\Support\Site::trainings() as $slug => $training)
                     <a href="{{ route('training', $slug) }}" class="rounded-base bg-navy-50 p-6 hover:bg-mint-100">
                         <h3 class="text-lg">{{ $training['title'] }}</h3>
                         <p class="mt-2 text-sm text-gray-600">{{ $training['short'] }}</p>

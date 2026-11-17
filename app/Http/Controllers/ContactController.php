@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\NewContactRequest;
 use App\Models\ContactRequest;
+use App\Support\Site;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -23,7 +24,7 @@ class ContactController extends Controller
             'last_name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'email', 'max:255'],
             'phone' => ['nullable', 'string', 'max:30'],
-            'interest' => ['nullable', Rule::in(config('site.interests'))],
+            'interest' => ['nullable', Rule::in(Site::interests())],
             'message' => ['nullable', 'string', 'max:5000'],
             'source' => ['nullable', Rule::in(['contact', 'over-ons', 'proefles', 'duo-training'])],
         ], [], [
