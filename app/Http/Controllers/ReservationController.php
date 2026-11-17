@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\NewReservation;
 use App\Models\Reservation;
+use App\Support\Notify;
 use App\Support\Schedule;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -41,8 +42,9 @@ class ReservationController extends Controller
         );
 
         if ($reservation->wasRecentlyCreated) {
+            // Bevestiging naar de deelnemer; admin- en contactadres krijgen een kopie (bcc).
             Mail::to($reservation->email)
-                ->bcc(config('site.contact.notify'))
+                ->bcc(Notify::recipients())
                 ->send(new NewReservation($reservation));
         }
 

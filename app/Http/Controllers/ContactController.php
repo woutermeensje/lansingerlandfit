@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\NewContactRequest;
 use App\Models\ContactRequest;
+use App\Support\Notify;
 use App\Support\Site;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -40,12 +41,11 @@ class ContactController extends Controller
 
         $contact = ContactRequest::create($data);
 
-        $notify = config('site.contact.notify');
-        $cc = config('site.contact.cc');
+        // Naar het admin-adres, met een cc naar het contactadres (als dat een ander adres is).
+        $recipients = Notify::recipients();
 
-        // Geen cc naar hetzelfde adres als de ontvanger, anders komt de mail dubbel binnen.
-        Mail::to($notify)
-            ->cc(filled($cc) && strcasecmp($cc, $notify) !== 0 ? $cc : [])
+        Mail::to(array_shift($recipients))
+            ->cc($recipients)
             ->send(new NewContactRequest($contact));
 
         return back()->with('status', 'Bedankt voor je bericht! Ik neem zo snel mogelijk contact met je op.');

@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Mail\NewContactRequest;
 use App\Mail\NewReservation;
 use App\Models\Lesson;
+use App\Support\Notify;
 use App\Support\Schedule;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
@@ -125,6 +126,30 @@ class FormsTest extends TestCase
 
         $this->assertDatabaseHas('reservations', ['lesson_id' => $lesson['id'], 'email' => 'piet@example.com']);
         Mail::assertSent(NewReservation::class, fn ($m) => $m->hasTo('piet@example.com'));
+    }
+
+    public function test_reservation_notifies_admin_and_contact_email(): void
+    {
+        Mail::fake();
+        config(['site.contact.notify' => 'admin@example.com', 'site.contact.cc' => 'cindy@example.com']);
+        $lesson = Schedule::lessons()->first();
+
+        $this->post('/reserveren', [
+            'lesson_id' => $lesson['id'],
+            'date' => Schedule::upcomingDates($lesson)->first()->toDateString(),
+            'name' => 'Piet',
+            'email' => 'piet@example.com',
+        ])->assertSessionHas('status');
+
+        Mail::assertSent(NewReservation::class, fn ($m) => $m->hasTo('piet@example.com')
+            && $m->hasBcc('admin@example.com') && $m->hasBcc('cindy@example.com'));
+    }
+
+    public function test_same_admin_and_contact_email_gets_one_notification(): void
+    {
+        config(['site.contact.notify' => 'cindy@example.com', 'site.contact.cc' => 'Cindy@Example.com ']);
+
+        $this->assertSame(['cindy@example.com'], Notify::recipients());
     }
 
     public function test_reservation_rejects_wrong_weekday(): void
