@@ -45,6 +45,7 @@ class FormsTest extends TestCase
         return [
             'not configured' => [null],
             'empty' => [''],
+            'same as recipient' => ['ADMIN@example.com'],
         ];
     }
 

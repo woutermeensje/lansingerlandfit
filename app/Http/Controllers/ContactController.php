@@ -40,8 +40,12 @@ class ContactController extends Controller
 
         $contact = ContactRequest::create($data);
 
-        Mail::to(config('site.contact.notify'))
-            ->cc(config('site.contact.cc'))
+        $notify = config('site.contact.notify');
+        $cc = config('site.contact.cc');
+
+        // Geen cc naar hetzelfde adres als de ontvanger, anders komt de mail dubbel binnen.
+        Mail::to($notify)
+            ->cc(filled($cc) && strcasecmp($cc, $notify) !== 0 ? $cc : [])
             ->send(new NewContactRequest($contact));
 
         return back()->with('status', 'Bedankt voor je bericht! Ik neem zo snel mogelijk contact met je op.');
